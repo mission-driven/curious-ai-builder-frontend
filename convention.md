@@ -3,7 +3,7 @@
 > **참고**: 
 > - 전체 아키텍처는 [architecture.md](./architecture.md)를 참조하세요.
 > - 파일 구조는 [file-structure.md](./file-structure.md)를 참조하세요.
-> - 컴포넌트 구조는 [component-structure.md](./component-structure.md)를 참조하세요.
+> - 컴포넌트 구조는 [component-convention.md](./component-convention.md)를 참조하세요.
 
 ## 파일 및 폴더 명명 규칙
 
@@ -17,6 +17,13 @@
 
 ## 코드 스타일
 
+### 들여쓰기 및 포맷팅
+- **들여쓰기**: 4칸 공백 사용 (탭 사용 금지)
+- **Prettier 설정**: 자동 포맷팅 적용
+- **줄 길이**: 최대 80자
+- **세미콜론**: 사용하지 않음
+- **따옴표**: 작은따옴표 사용
+
 ### TypeScript
 - **인터페이스명**: PascalCase
 - **타입명**: PascalCase
@@ -25,20 +32,20 @@
 
 ```typescript
 interface UserProfile {
-  id: string;
-  name: string;
-  email: string;
+    id: string
+    name: string
+    email: string
 }
 
 type ApiResponse<T> = {
-  data: T;
-  status: number;
-};
+    data: T
+    status: number
+}
 
-const API_BASE_URL = 'https://api.example.com';
+const API_BASE_URL = 'https://api.example.com'
 
 function getUserProfile(userId: string): Promise<UserProfile> {
-  // 구현
+    // 구현
 }
 ```
 
@@ -49,16 +56,16 @@ function getUserProfile(userId: string): Promise<UserProfile> {
 
 ```typescript
 interface UserCardProps {
-  user: UserProfile;
-  onEdit?: (user: UserProfile) => void;
+    user: UserProfile
+    onEdit?: (user: UserProfile) => void
 }
 
 export function UserCard({ user, onEdit }: UserCardProps) {
-  // 구현
+    // 구현
 }
 
 export function useUserData(userId: string) {
-  // 구현
+    // 구현
 }
 ```
 
@@ -78,9 +85,9 @@ DELETE /api/users/{id}
 
 // 응답 형식
 {
-  "success": true,
-  "data": { ... },
-  "message": "성공적으로 처리되었습니다"
+    "success": true,
+    "data": { ... },
+    "message": "성공적으로 처리되었습니다"
 }
 ```
 
@@ -98,15 +105,15 @@ DELETE /api/users/{id}
 ```typescript
 // 쿼리 키
 const userQueries = {
-  all: ['users'] as const,
-  lists: () => [...userQueries.all, 'list'] as const,
-  list: (filters: string) => [...userQueries.lists(), { filters }] as const,
-  details: () => [...userQueries.all, 'detail'] as const,
-  detail: (id: string) => [...userQueries.details(), id] as const,
-};
+    all: ['users'] as const,
+    lists: () => [...userQueries.all, 'list'] as const,
+    list: (filters: string) => [...userQueries.lists(), { filters }] as const,
+    details: () => [...userQueries.all, 'detail'] as const,
+    detail: (id: string) => [...userQueries.details(), id] as const,
+}
 
 // 사용 예시
-useQuery(userQueries.detail(userId));
+useQuery(userQueries.detail(userId))
 ```
 
 ### Zustand
@@ -115,16 +122,16 @@ useQuery(userQueries.detail(userId));
 
 ```typescript
 interface UserStore {
-  user: UserProfile | null;
-  setUser: (user: UserProfile) => void;
-  clearUser: () => void;
+    user: UserProfile | null
+    setUser: (user: UserProfile) => void
+    clearUser: () => void
 }
 
 export const useUserStore = create<UserStore>((set) => ({
-  user: null,
-  setUser: (user) => set({ user }),
-  clearUser: () => set({ user: null }),
-}));
+    user: null,
+    setUser: (user) => set({ user }),
+    clearUser: () => set({ user: null }),
+}))
 ```
 
 ## 스타일링
@@ -137,7 +144,7 @@ export const useUserStore = create<UserStore>((set) => ({
 ```css
 /* 좋은 예 */
 .user-card {
-  @apply flex flex-col p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow;
+    @apply flex flex-col p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow;
 }
 
 /* 클래스 순서 */
@@ -147,29 +154,6 @@ export const useUserStore = create<UserStore>((set) => ({
 ### shadcn/ui
 - **컴포넌트 확장**: 기존 컴포넌트를 확장하여 사용
 - **일관된 디자인**: 디자인 시스템 준수
-
-## 테스트
-
-### 파일명
-- **테스트 파일**: `.test.ts` 또는 `.spec.ts` 접미사
-- **테스트 폴더**: `__tests__` 또는 `tests` 폴더
-
-### 테스트 구조
-- **설명**: `describe` 블록으로 그룹화
-- **테스트 케이스**: `it` 또는 `test`로 명확한 설명
-- **검증**: `expect`로 결과 확인
-
-```typescript
-describe('UserCard 컴포넌트', () => {
-  it('사용자 정보를 올바르게 표시해야 한다', () => {
-    // 테스트 구현
-  });
-
-  it('편집 버튼 클릭 시 onEdit 콜백을 호출해야 한다', () => {
-    // 테스트 구현
-  });
-});
-```
 
 ## Git 컨벤션
 
@@ -197,7 +181,7 @@ describe('UserCard 컴포넌트', () => {
  * @throws 사용자를 찾을 수 없는 경우
  */
 async function fetchUserProfile(userId: string): Promise<UserProfile> {
-  // 구현
+    // 구현
 }
 ```
 
