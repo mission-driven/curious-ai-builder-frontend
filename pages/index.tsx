@@ -144,6 +144,97 @@ export default function Home() {
                         </div>
                     </div>
                 </section>
+                {/* Pricing section */}
+                <section id="pricing" className="container mx-auto px-4 pb-28">
+                    <div className="mx-auto max-w-3xl text-center">
+                        <h2 className="text-[clamp(28px,5.6vw,52px)] font-extrabold tracking-tight text-gray-900">Pricing</h2>
+                        <p className="mt-3 text-gray-600">How many messages do you expect per month?</p>
+                    </div>
+                    {/* Slider mock */}
+                    <div className="mx-auto mt-8 max-w-2xl">
+                        <div className="h-2 rounded-full bg-gray-200">
+                            <div className="h-2 w-1/3 rounded-full bg-rose-300" />
+                        </div>
+                        <div className="mt-2 flex justify-between text-xs text-gray-500">
+                            <span>1k</span><span>5k</span><span>10k</span><span>20k</span><span>30k</span><span>50k</span>
+                        </div>
+                        <p className="mt-3 text-center text-sm text-gray-600">5k messages/month</p>
+                    </div>
+
+                    {/* Plans */}
+                    <div className="mx-auto mt-12 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+                        {/* Free */}
+                        <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                            <h3 className="text-lg font-bold">Free</h3>
+                            <div className="mt-4 flex items-baseline gap-1">
+                                <span className="text-3xl font-extrabold">$0</span>
+                                <span className="text-gray-500">/month</span>
+                            </div>
+                            <p className="mt-2 text-sm text-gray-500">50 messages included</p>
+                            <ul className="mt-6 space-y-3 text-sm text-gray-700">
+                                <li>✔ Create custom AI apps</li>
+                                <li>✔ Create up to 5 apps</li>
+                                <li>✖ No Monetization</li>
+                                <li>✖ No Analytics</li>
+                            </ul>
+                            <button className="mt-6 w-full rounded-full border border-gray-300 px-4 py-3 text-sm font-semibold hover:bg-gray-50">Get Started</button>
+                        </div>
+
+                        {/* Lite */}
+                        <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                            <h3 className="text-lg font-bold">Lite</h3>
+                            <div className="mt-4 flex items-baseline gap-1">
+                                <span className="text-3xl font-extrabold">$15</span>
+                                <span className="text-gray-500">/month</span>
+                            </div>
+                            <p className="mt-2 text-sm text-gray-500">1k messages/month included</p>
+                            <ul className="mt-6 space-y-3 text-sm text-gray-700">
+                                <li>✔ Create custom AI apps</li>
+                                <li>✔ Create up to 50 apps</li>
+                                <li>✔ Monetize your apps</li>
+                                <li>✖ No Analytics</li>
+                            </ul>
+                            <button className="mt-6 w-full rounded-full border border-gray-300 px-4 py-3 text-sm font-semibold hover:bg-gray-50">Get Started</button>
+                        </div>
+
+                        {/* Pro */}
+                        <div className="rounded-2xl bg-white p-6 shadow-2xl ring-2 ring-rose-300">
+                            <div className="mb-2 inline-block rounded-full bg-rose-100 px-2 py-0.5 text-xs font-semibold text-rose-700">Popular</div>
+                            <h3 className="text-lg font-bold">Pro</h3>
+                            <div className="mt-4 flex items-baseline gap-1">
+                                <span className="text-3xl font-extrabold">$29</span>
+                                <span className="text-gray-500">/month</span>
+                            </div>
+                            <p className="mt-2 text-sm text-gray-500">5k messages/month included</p>
+                            <ul className="mt-6 space-y-3 text-sm text-gray-700">
+                                <li>✔ All Lite Features</li>
+                                <li>✔ Create up to 100 apps</li>
+                                <li>✔ Custom Domains & Embedding</li>
+                                <li>✔ Publish to Messaging Services</li>
+                                <li>✔ Limited Analytics (Last 50)</li>
+                            </ul>
+                            <button className="mt-6 w-full rounded-full bg-black px-4 py-3 text-sm font-semibold text-white hover:bg-gray-800">Get Started</button>
+                        </div>
+
+                        {/* Pro Plus */}
+                        <div className="rounded-2xl bg-white p-6 shadow-sm ring-1 ring-gray-200">
+                            <h3 className="text-lg font-bold">Pro Plus</h3>
+                            <div className="mt-4 flex items-baseline gap-1">
+                                <span className="text-3xl font-extrabold">$59</span>
+                                <span className="text-gray-500">/month</span>
+                            </div>
+                            <p className="mt-2 text-sm text-gray-500">5k messages/month included</p>
+                            <ul className="mt-6 space-y-3 text-sm text-gray-700">
+                                <li>✔ All Pro Features</li>
+                                <li>✔ Create up to 1000 apps</li>
+                                <li>✔ Prioritized Feature Requests</li>
+                                <li>✔ Advanced Analytics (Last 500)</li>
+                                <li>✔ Early access to new features</li>
+                            </ul>
+                            <button className="mt-6 w-full rounded-full border border-gray-300 px-4 py-3 text-sm font-semibold hover:bg-gray-50">Get Started</button>
+                        </div>
+                    </div>
+                </section>
 
                 {/* Logos row */}
                 <section className="container mx-auto px-4 pb-8">
