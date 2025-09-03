@@ -6,13 +6,12 @@ function NavSection({ title }: { title: string }) {
     )
 }
 
-function NavItem({ href = '#', icon, children, active = false }: { href?: string; icon: React.ReactNode; children: React.ReactNode; active?: boolean }) {
+function NavItem({ href = '#', children, active = false }: { href?: string; children: React.ReactNode; active?: boolean }) {
     return (
         <Link
             href={href}
             className={`${active ? 'bg-indigo-100/80 text-gray-900' : 'text-gray-800 hover:bg-gray-100'} flex items-center gap-3 rounded-xl px-3 py-3 transition-colors`}
         >
-            <span className="text-lg">{icon}</span>
             <span className="text-[15px] font-medium">{children}</span>
         </Link>
     )
@@ -30,18 +29,18 @@ export default function Sidebar() {
             {/* Navigation */}
             <nav className="mt-6 flex-1">
                 <NavSection title="Dashboard" />
-                <NavItem href="/dashboard" icon="📊" active>Dashboard</NavItem>
+                <NavItem href="/dashboard" active>Dashboard</NavItem>
 
                 <NavSection title="Manage" />
-                <NavItem href="/marketplace" icon="🏪">Marketplace</NavItem>
-                <NavItem href="/users" icon="👥">Users</NavItem>
+                <NavItem href="/marketplace" >Marketplace</NavItem>
+                <NavItem href="/users" >Users</NavItem>
             </nav>
 
             {/* Support */}
             <div className="mt-auto">
                 <NavSection title="Support" />
-                <NavItem href="#" icon="❓">Help Center</NavItem>
-                <NavItem href="#" icon="📧">Contact</NavItem>
+                <NavItem href="#" >Center</NavItem>
+                <NavItem href="#" >Contact</NavItem>
             </div>
 
             {/* Message limit */}
