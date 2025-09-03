@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 function NavSection({ title }: { title: string }) {
     return (
@@ -18,6 +19,9 @@ function NavItem({ href = '#', children, active = false }: { href?: string; chil
 }
 
 export default function Sidebar() {
+    const router = useRouter()
+    const currentPath = router.pathname
+
     return (
         <aside className="fixed left-0 top-0 z-50 h-screen w-sidebar flex-col border-r border-gray-200 bg-white px-3 py-4">
             {/* Logo */}
@@ -29,18 +33,18 @@ export default function Sidebar() {
             {/* Navigation */}
             <nav className="mt-6 flex-1">
                 <NavSection title="Dashboard" />
-                <NavItem href="/dashboard" active>Dashboard</NavItem>
+                <NavItem href="/dashboard" active={currentPath === '/dashboard'}>Dashboard</NavItem>
 
                 <NavSection title="Manage" />
-                <NavItem href="/marketplace" >Marketplace</NavItem>
-                <NavItem href="/users" >Users</NavItem>
+                <NavItem href="/marketplace" active={currentPath === '/marketplace'}>Marketplace</NavItem>
+                <NavItem href="/users" active={currentPath === '/users'}>Users</NavItem>
             </nav>
 
             {/* Support */}
             <div className="mt-auto">
                 <NavSection title="Support" />
-                <NavItem href="#" >Center</NavItem>
-                <NavItem href="#" >Contact</NavItem>
+                <NavItem href="#" active={false}>Help Center</NavItem>
+                <NavItem href="#" active={false}>Contact</NavItem>
             </div>
 
             {/* Message limit */}
@@ -50,7 +54,7 @@ export default function Sidebar() {
             </div>
 
             {/* Logout */}
-            <button className="mt-3 w-full rounded-xl bg-gray-100 px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200">
+            <button className="mt-3 w-full rounded-xl bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200">
                 Logout
             </button>
         </aside>
