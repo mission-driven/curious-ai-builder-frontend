@@ -7,6 +7,10 @@
   /* 사이드바 너비를 중앙에서 관리하기 위한 CSS 변수 */
   /* 18rem = 288px (Tailwind의 w-72와 동일) */
   --sidebar-width: 18rem; /* 288px */
+  
+  /* AI 앱 빌더 사이드바 너비를 중앙에서 관리하기 위한 CSS 변수 */
+  /* 28.75rem = 460px */
+  --app-builder-sidebar-width: 28.75rem; /* 460px */
 }
 
 /* ===== CUSTOM UTILITY CLASSES ===== */
@@ -21,6 +25,18 @@
   /* 사이드바 컴포넌트에서 사용 */
   .w-sidebar {
     width: var(--sidebar-width);
+  }
+  
+  /* AI 앱 빌더 사이드바 너비만큼 왼쪽 패딩을 주는 유틸리티 클래스 */
+  /* AI 앱 빌더 메인 콘텐츠가 사이드바와 겹치지 않도록 사용 */
+  .pl-app-builder-sidebar {
+    padding-left: var(--app-builder-sidebar-width);
+  }
+  
+  /* AI 앱 빌더 사이드바 자체의 너비를 지정하는 유틸리티 클래스 */
+  /* AI 앱 빌더 사이드바 컴포넌트에서 사용 */
+  .w-app-builder-sidebar {
+    width: var(--app-builder-sidebar-width);
   }
 }
 

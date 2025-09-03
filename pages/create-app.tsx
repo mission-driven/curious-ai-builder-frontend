@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 const Sidebar = dynamic(() => import('../components/Sidebar'), { ssr: false })
 
@@ -52,14 +53,15 @@ export default function CreateAppPage() {
                                 <h2 className="mb-6 text-2xl font-bold text-gray-900">💡 GPT Builder Apps</h2>
                                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
                                     {GPT_BUILDER_APPS.map((model) => (
-                                        <div
+                                        <Link
                                             key={model.id}
+                                            href="/editor"
                                             className="group cursor-pointer rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all hover:shadow-md hover:border-gray-300"
                                         >
                                             <div className="mb-3 text-3xl">{model.icon}</div>
                                             <h3 className="mb-1 font-semibold text-gray-900">{model.name}</h3>
                                             <p className="text-sm text-gray-600">{model.description}</p>
-                                        </div>
+                                        </Link>
                                     ))}
                                 </div>
                             </div>
@@ -71,8 +73,7 @@ export default function CreateAppPage() {
                                     {X_TO_Y_CONVERTERS.map((converter) => (
                                         <div
                                             key={converter.id}
-                                            className={`group rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all 
-                                                ${converter.comingSoon ? 'opacity-60' : 'cursor-pointer hover:shadow-md hover:border-gray-300'
+                                            className={`group rounded-2xl border border-gray-200 bg-white p-4 shadow-sm transition-all ${converter.comingSoon ? 'opacity-60' : 'cursor-pointer hover:shadow-md hover:border-gray-300'
                                                 }`}
                                         >
                                             <div className="mb-3 text-3xl">{converter.icon}</div>
