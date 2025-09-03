@@ -31,9 +31,9 @@ export default function UsersPage() {
             <Head>
                 <title>Users - AI Builder</title>
             </Head>
-            <main className="min-h-screen bg-white">
-                <div className="flex min-h-screen w-full">
-                    <Sidebar />
+            <Sidebar />
+            <main className="min-h-screen bg-white pl-sidebar">
+                <div className="w-full">
                     <section className="flex-1 bg-gray-50/40">
                         <div className="px-6 py-8">
                             <div className="flex items-end justify-between">

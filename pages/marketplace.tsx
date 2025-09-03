@@ -51,9 +51,9 @@ export default function MarketplacePage() {
             <Head>
                 <title>Marketplace - AI Builder</title>
             </Head>
-            <main className="min-h-screen bg-white">
-                <div className="flex min-h-screen w-full">
-                    <Sidebar />
+            <Sidebar />
+            <main className="min-h-screen bg-white pl-sidebar">
+                <div className="w-full">
                     <section className="flex-1 bg-gray-50/40">
                         <div className="px-6 py-8">
                             <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">Marketplace</h1>
@@ -70,17 +70,17 @@ export default function MarketplacePage() {
                                 </div>
                             </div>
 
-                            {/* Masonry Grid */}
-                            <div className="mt-6 columns-1 gap-6 md:columns-2 xl:columns-3">
+                            {/* Grid */}
+                            <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
                                 {/* Join card */}
-                                <div className="mb-6 inline-block w-full break-inside-avoid rounded-2xl border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5">
+                                <div className="rounded-2xl border border-gray-200 bg-gradient-to-b from-gray-50 to-white p-5">
                                     <p className="text-lg font-semibold text-gray-900">📈 Expand exposure</p>
                                     <p className="mt-2 text-sm text-gray-600">Get listed into the Marketplace</p>
                                     <button className="mt-6 w-full rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-gray-800">⚡ Join now</button>
                                 </div>
 
                                 {MOCK_APPS.map((app, idx) => (
-                                    <div key={idx} className="mb-6 inline-block w-full break-inside-avoid rounded-2xl border border-gray-200 bg-white p-5">
+                                    <div key={idx} className="rounded-2xl border border-gray-200 bg-white p-5">
                                         <p className="truncate text-lg font-semibold text-gray-900">{app.title}</p>
                                         <p className="mt-2 text-sm leading-6 text-gray-700">{app.description}</p>
                                         <div className="mt-4 text-sm">
