@@ -67,7 +67,7 @@ export default function Dashboard() {
                                     </ul>
                                 </div>
                                 <div className="mt-4 flex flex-wrap items-center gap-3">
-                                    <button className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-gray-800">Create App</button>
+                                    <Link href="/create-app" className="rounded-xl bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white hover:bg-gray-800">Create App</Link>
                                     <button className="rounded-xl bg-white px-4 py-2.5 text-sm font-semibold text-gray-900 ring-1 ring-gray-300 hover:bg-gray-50">Subscribe - $0 / mo</button>
                                 </div>
                             </div>
@@ -97,7 +97,7 @@ export default function Dashboard() {
                             {/* 3. Your AI Apps */}
                             <div className="mt-10 flex items-center justify-between">
                                 <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Your AI Apps 💰</h2>
-                                <button className="rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800">Create App</button>
+                                <Link href="/create-app" className="rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800">Create App</Link>
                             </div>
                             <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-4">
                                 <div className="mt-4 overflow-x-auto">
