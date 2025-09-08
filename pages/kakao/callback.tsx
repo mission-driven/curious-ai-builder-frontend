@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import apiClient from '@/lib/api'
 
 export default function KakaoCallbackPage() {
     const router = useRouter()
