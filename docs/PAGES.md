@@ -67,12 +67,12 @@ Next.js Pages Router를 사용한 파일 기반 라우팅 시스템입니다. �
 **레이아웃**: Sidebar + 메인 콘텐츠
 
 
-### Authentication Pages
+### Authentication API Routes
 
-#### 10. kakao/callback.tsx
-**경로**: `/kakao/callback`  
-**용도**: 카카오 OAuth 콜백 처리  
-**특징**: 인증 처리 중 로딩 화면
+#### 10. api/auth/kakao/callback.ts
+**경로**: `/api/auth/kakao/callback`  
+**용도**: 카카오 access_token 검증, 사용자 처리, HttpOnly 세션 쿠키 설정 후 리다이렉트  
+**특징**: 서버 사이드에서 `Set-Cookie (HttpOnly; Secure; SameSite=Lax)` 설정, `/dashboard`로 302 리다이렉트
 
 
 ### Special Pages
@@ -99,5 +99,5 @@ Next.js Pages Router를 사용한 파일 기반 라우팅 시스템입니다. �
 ├── /marketplace                 # 마켓플레이스
 ├── /users                       # 사용자 관리
 ├── /analytics/[appId]           # 앱 분석 (동적)
-└── /kakao/callback              # 카카오 OAuth 콜백
+└── /api/auth/kakao/callback     # 카카오 OAuth 서버 콜백(API Route)
 ```
