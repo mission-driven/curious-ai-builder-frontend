@@ -9,11 +9,9 @@ const apiClient = axios.create({
     },
 })
 
-// 요청 인터셉터 - JWT 토큰 추가
+// 요청 인터셉터
 apiClient.interceptors.request.use(
     (config) => {
-        // NextAuth에서 토큰을 가져와서 헤더에 추가
-        // 실제 구현에서는 NextAuth의 getToken() 사용
         return config
     },
     (error) => {
@@ -26,8 +24,7 @@ apiClient.interceptors.response.use(
     (response) => response,
     (error) => {
         if (error.response?.status === 401) {
-            // 인증 에러 처리
-            console.error('Authentication failed')
+            console.error('Unauthorized request')
         }
         return Promise.reject(error)
     }

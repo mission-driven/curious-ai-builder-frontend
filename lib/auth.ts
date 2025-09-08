@@ -1,13 +1,13 @@
-import { getToken } from 'next-auth/jwt'
 import { NextRequest } from 'next/server'
 
-// JWT 토큰에서 사용자 정보 추출
-export async function getUserFromToken(req: NextRequest) {
+// Session 기반 사용자 인증 유틸리티
+export async function getUserFromSession(req: NextRequest) {
     try {
-        const token = await getToken({ req })
-        return token
+        // NextAuth session에서 사용자 정보 추출
+        // 실제 구현에서는 NextAuth의 getSession() 사용
+        return null
     } catch (error) {
-        console.error('Failed to get user from token:', error)
+        console.error('Failed to get user from session:', error)
         return null
     }
 }
