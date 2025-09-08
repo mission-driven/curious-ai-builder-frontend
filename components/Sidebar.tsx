@@ -54,7 +54,17 @@ export default function Sidebar() {
             </div>
 
             {/* Logout */}
-            <button className="mt-3 w-full rounded-xl bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200">
+            <button
+                className="mt-3 w-full rounded-xl bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200"
+                onClick={async () => {
+                    try {
+                        await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' })
+                        window.location.href = '/login'
+                    } catch (e) {
+                        console.error('Logout failed', e)
+                    }
+                }}
+            >
                 Logout
             </button>
         </aside>
