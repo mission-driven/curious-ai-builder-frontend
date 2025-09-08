@@ -80,8 +80,12 @@ export async function loginWithKakao() {
         window.Kakao.Auth.login({
             success: function (authObj: any) {
                 console.log('Kakao login success:', authObj)
-                // TODO: 백엔드로 인가 코드 전송
-                // redirectToCallback(authObj.code)
+                // 토큰을 콜백 페이지로 전송
+                if (authObj.access_token) {
+                    window.location.href = `/kakao/callback?access_token=${authObj.access_token}&refresh_token=${authObj.refresh_token || ''}`
+                } else {
+                    console.error('No access token received')
+                }
             },
             fail: function (err: any) {
                 console.error('Kakao login failed:', err)
