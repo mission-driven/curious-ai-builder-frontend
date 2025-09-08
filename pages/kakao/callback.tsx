@@ -2,6 +2,11 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
+
+const KAKAO_AUTH_SERVER = "https://kauth.kakao.com" // 액세스 토큰 요청을 보낼 카카오 인증 서버 주소
+const KAKAO_API_SERVER = "https://kapi.kakao.com"   // 카카오 API 호출 서버 주소
+
+
 export default function KakaoCallbackPage() {
     const router = useRouter()
 
