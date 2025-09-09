@@ -15,7 +15,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>AI Builder - AI 에이전트 생성 플랫폼</title>
+                <title>Curi-AI - AI 에이전트 생성 플랫폼</title>
                 <meta name="description" content="사용자가 Custom AI App을 생성하고, 마켓플레이스를 통해 공유하며, 수익화할 수 있는 AI 에이전트 플랫폼" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
@@ -26,7 +26,7 @@ export default function Home() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center gap-2 font-semibold text-gray-900">
                         <span className="inline-block h-6 w-6 rounded bg-gray-900 text-white text-xs flex items-center justify-center">AI</span>
-                        <span>AI Builder</span>
+                        <span>Curi-AI</span>
                     </Link>
                     {/* Desktop Nav */}
                     <nav className="hidden md:flex items-center gap-8 text-sm text-gray-700">
@@ -238,7 +238,7 @@ export default function Home() {
 
                 {/* Logos row */}
                 <section className="container mx-auto px-4 pb-8">
-                    <p className="text-center text-sm text-gray-500">Leading Educators, Consultants, Startups, Businesses Use AI Builder</p>
+                    <p className="text-center text-sm text-gray-500">Leading Educators, Consultants, Startups, Businesses Use Curi-AI</p>
                     <div className="mt-6 grid grid-cols-2 gap-6 opacity-80 sm:grid-cols-3 md:grid-cols-6">
                         {['TEXAS', 'MICHIGAN', 'UCL', 'TRILOGY', 'VERIZON', 'PORTER'].map((name) => (
                             <div key={name} className="flex items-center justify-center rounded-md bg-white px-3 py-3 text-xs font-semibold tracking-wide text-gray-700 shadow-sm ring-1 ring-gray-900/10">
@@ -254,7 +254,7 @@ export default function Home() {
                         Build, launch, whitelabel <span className="text-red-600 underline decoration-red-300/60">your custom AI app</span>
                     </h2>
                     <p className="mt-3 max-w-4xl text-lg text-gray-600">
-                        AI Builder comes with everything you need to create and distribute your custom AI solution without code in minutes
+                        Curi-AI comes with everything you need to create and distribute your custom AI solution without code in minutes
                     </p>
                 </section>
 
@@ -262,8 +262,8 @@ export default function Home() {
                 <section className="container mx-auto grid grid-cols-1 items-start gap-10 px-4 pb-24 md:grid-cols-2">
                     <div>
                         <span className="inline-flex items-center rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700 ring-1 ring-rose-200">Monetization</span>
-                        <h3 className="mt-4 text-3xl font-bold tracking-tight text-gray-900">Earn Revenue From Your AI Apps</h3>
-                        <p className="mt-3 text-gray-700">Turn your expertise into income by monetizing your AI apps. AI Builder integrates with Stripe to handle all payment processing securely.</p>
+                        <h3 className="mt-4 text-3xl font-bold tracking-tight text-gray-900">AI 앱으로 수익 창출하기</h3>
+                        <p className="mt-3 text-gray-700">Turn your expertise into income by monetizing your AI apps. Curi-AI integrates with Stripe to handle all payment processing securely.</p>
                         <ul className="mt-6 space-y-5">
                             <li className="flex gap-3">
                                 <CheckIcon />

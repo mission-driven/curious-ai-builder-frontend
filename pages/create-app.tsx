@@ -35,7 +35,7 @@ export default function CreateAppPage() {
     return (
         <>
             <Head>
-                <title>Create AI Apps - AI Builder</title>
+                <title>AI 앱 생성 - Curi-AI</title>
             </Head>
             <Sidebar />
             <main className="min-h-screen bg-white pl-sidebar">

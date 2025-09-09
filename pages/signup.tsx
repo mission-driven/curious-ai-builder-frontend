@@ -18,7 +18,7 @@ export default function SignupPage() {
     return (
         <>
             <Head>
-                <title>회원가입 - AI Builder</title>
+                <title>회원가입 - Curi-AI</title>
             </Head>
             <main className="min-h-screen bg-gradient-to-b from-white to-slate-50">
                 <div className="container mx-auto flex min-h-screen items-center px-4 py-10">
@@ -27,7 +27,7 @@ export default function SignupPage() {
                         <section className="hidden md:block">
                             <div className="mx-auto w-full max-w-xl">
                                 <h2 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                                    🚀 Join creators building with AI Builder
+                                    🚀 Join creators building with Curi-AI
                                 </h2>
                                 <p className="mt-3 text-gray-700">
                                     Launch AI apps faster with hosted UI, auth, database and payments.

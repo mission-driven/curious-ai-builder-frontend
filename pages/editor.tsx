@@ -6,7 +6,7 @@ export default function EditorPage() {
     return (
         <>
             <Head>
-                <title>Create New AI App - AI Builder</title>
+                <title>새 AI 앱 생성 - Curi-AI</title>
             </Head>
             <AppBuilderSidebar />
             <main className="min-h-screen bg-white pl-app-builder-sidebar">

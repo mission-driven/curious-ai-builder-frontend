@@ -17,7 +17,7 @@ export default function LoginPage() {
     return (
         <>
             <Head>
-                <title>로그인 - AI Builder</title>
+                <title>로그인 - Curi-AI</title>
             </Head>
             <main className="min-h-screen bg-gradient-to-b from-white to-slate-50">
                 <div className="container mx-auto flex min-h-screen items-center px-4 py-10">

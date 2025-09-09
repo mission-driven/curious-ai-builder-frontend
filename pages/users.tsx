@@ -29,7 +29,7 @@ export default function UsersPage() {
     return (
         <>
             <Head>
-                <title>Users - AI Builder</title>
+                <title>사용자 관리 - Curi-AI</title>
             </Head>
             <Sidebar />
             <main className="min-h-screen bg-white pl-sidebar">
@@ -38,14 +38,14 @@ export default function UsersPage() {
                         <div className="px-6 py-8">
                             <div className="flex items-end justify-between">
                                 <div>
-                                    <h1 className="text-2xl font-extrabold tracking-tight text-gray-900">User Management</h1>
-                                    <p className="mt-1 text-sm text-gray-600">All Your App Users</p>
+                                    <h1 className="text-2xl font-extrabold tracking-tight text-gray-900">사용자 관리</h1>
+                                    <p className="mt-1 text-sm text-gray-600">모든 앱 사용자</p>
                                 </div>
                             </div>
 
                             {/* Stat cards */}
                             <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-3">
-                                {[{ label: 'Total Unique Users', value: 1, icon: '🧑‍🤝‍🧑' }, { label: 'Total Messages', value: 8, icon: '💬' }, { label: 'Avg. Messages per User', value: 8, icon: '📈' }].map((s, i) => (
+                                {[{ label: '총 고유 사용자', value: 1, icon: '🧑‍🤝‍🧑' }, { label: '총 메시지', value: 8, icon: '💬' }, { label: '사용자당 평균 메시지', value: 8, icon: '📈' }].map((s, i) => (
                                     <div key={i} className="rounded-2xl border border-gray-200 bg-white p-5">
                                         <div className="flex items-center gap-3">
                                             <span className="text-2xl">{s.icon}</span>
@@ -62,9 +62,9 @@ export default function UsersPage() {
                             <div className="mt-6 flex flex-wrap items-center gap-3">
                                 <div className="relative flex-1 min-w-[260px] max-w-xl">
                                     <span className="pointer-events-none absolute inset-y-0 left-3 grid place-items-center text-gray-400">🔎</span>
-                                    <input placeholder="Search users by name or email..." className="w-full rounded-2xl border border-gray-300 bg-white py-3 pl-10 pr-4 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
+                                    <input placeholder="이름이나 이메일로 사용자 검색..." className="w-full rounded-2xl border border-gray-300 bg-white py-3 pl-10 pr-4 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20" />
                                 </div>
-                                <button className="rounded-xl bg-white px-3 py-2 text-sm font-medium text-gray-800 ring-1 ring-gray-300">All Apps ▾</button>
+                                <button className="rounded-xl bg-white px-3 py-2 text-sm font-medium text-gray-800 ring-1 ring-gray-300">모든 앱 ▾</button>
                             </div>
 
                             {/* Table */}
@@ -72,12 +72,12 @@ export default function UsersPage() {
                                 <table className="w-full text-left text-sm">
                                     <thead className="bg-gray-50 text-gray-500">
                                         <tr>
-                                            <th className="px-4 py-3">User</th>
-                                            <th className="px-4 py-3">Email</th>
-                                            <th className="px-4 py-3">Total Messages</th>
-                                            <th className="px-4 py-3">Last Active</th>
-                                            <th className="px-4 py-3">Apps Used</th>
-                                            <th className="px-4 py-3">Actions</th>
+                                            <th className="px-4 py-3">사용자</th>
+                                            <th className="px-4 py-3">이메일</th>
+                                            <th className="px-4 py-3">총 메시지</th>
+                                            <th className="px-4 py-3">마지막 활동</th>
+                                            <th className="px-4 py-3">사용한 앱</th>
+                                            <th className="px-4 py-3">작업</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-100 text-gray-900">
@@ -88,7 +88,7 @@ export default function UsersPage() {
                                                         <div className="grid h-8 w-8 place-items-center rounded-full bg-indigo-100 text-indigo-700">{u.name.slice(0, 1)}</div>
                                                         <div>
                                                             <p className="font-medium">{u.name}</p>
-                                                            <p className="text-xs text-gray-500">Joined 9/1/2025</p>
+                                                            <p className="text-xs text-gray-500">가입일 2025. 9. 1.</p>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -113,7 +113,7 @@ export default function UsersPage() {
 
                             {/* Footer */}
                             <div className="mt-3 flex items-center justify-between text-sm text-gray-600">
-                                <p>Showing 1 to 1 of 1 users</p>
+                                <p>1명의 사용자 중 1-1 표시</p>
                                 <div className="flex items-center gap-2">
                                     <button className="rounded-md bg-white px-2 py-1 ring-1 ring-gray-300">10 per page ▾</button>
                                     <button className="rounded-md bg-white px-2 py-1 ring-1 ring-gray-300">‹</button>

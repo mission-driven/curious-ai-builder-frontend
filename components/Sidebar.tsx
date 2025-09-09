@@ -27,7 +27,7 @@ export default function Sidebar() {
             {/* Logo */}
             <div className="flex items-center gap-3 px-3 py-2">
                 <div className="grid h-8 w-8 place-items-center rounded bg-black text-white text-sm font-bold">C</div>
-                <span className="text-lg font-bold text-gray-900">CalStudio</span>
+                <span className="text-lg font-bold text-gray-900">Curi-AI</span>
             </div>
 
             {/* Navigation */}
@@ -43,13 +43,13 @@ export default function Sidebar() {
             {/* Support */}
             <div className="mt-auto">
                 <NavSection title="Support" />
-                <NavItem href="#" active={false}>Help Center</NavItem>
-                <NavItem href="#" active={false}>Contact</NavItem>
+                <NavItem href="#" active={false}>도움말 센터</NavItem>
+                <NavItem href="#" active={false}>문의하기</NavItem>
             </div>
 
             {/* Message limit */}
             <div className="mt-4 rounded-xl bg-gray-50 p-3">
-                <p className="text-xs text-gray-500">Message Limit</p>
+                <p className="text-xs text-gray-500">메시지 한도</p>
                 <p className="text-sm font-semibold text-gray-900">0 / 100</p>
             </div>
 
@@ -65,7 +65,7 @@ export default function Sidebar() {
                     }
                 }}
             >
-                Logout
+                로그아웃
             </button>
         </aside>
     )

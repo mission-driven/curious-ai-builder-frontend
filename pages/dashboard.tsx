@@ -25,7 +25,7 @@ export default function Dashboard() {
     return (
         <>
             <Head>
-                <title>Dashboard - AI Builder</title>
+                <title>대시보드 - Curi-AI</title>
             </Head>
             <Sidebar />
             <main className="min-h-screen bg-white pl-sidebar">
@@ -34,33 +34,33 @@ export default function Dashboard() {
                     <section className="flex-1 bg-gray-50/40">
                         <div className="px-6 py-8">
                             {/* 1. Welcome */}
-                            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">Welcome to CalStudio 👋</h1>
+                            <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">Curi-AI에 오신 것을 환영합니다 👋</h1>
 
                             <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-4">
                                 <div className="flex items-center justify-between">
-                                    <p className="text-lg font-semibold text-gray-900">Let&apos;s Get Started!</p>
+                                    <p className="text-lg font-semibold text-gray-900">시작해보세요!</p>
                                     <span className="inline-flex items-center gap-2 rounded-full bg-gray-100 px-3 py-1 text-sm text-gray-700">📋 3/3 Completed</span>
                                 </div>
                                 <div className="mt-4 rounded-xl bg-gray-50/80 p-4">
                                     <ul className="space-y-6">
                                         <li className="flex items-start justify-between">
                                             <div>
-                                                <p className="font-semibold text-gray-900">Create your first AI app</p>
-                                                <p className="text-gray-600">Build your custom AI app in minutes</p>
+                                                <p className="font-semibold text-gray-900">첫 번째 AI 앱 만들기</p>
+                                                <p className="text-gray-600">몇 분 안에 나만의 AI 앱을 만들어보세요</p>
                                             </div>
                                             <span className="text-green-500">✔</span>
                                         </li>
                                         <li className="flex items-start justify-between">
                                             <div>
-                                                <p className="font-semibold text-gray-900">Launch your app</p>
-                                                <p className="text-gray-600">Make your app live and share with others</p>
+                                                <p className="font-semibold text-gray-900">앱 출시하기</p>
+                                                <p className="text-gray-600">앱을 라이브로 만들고 다른 사람들과 공유하세요</p>
                                             </div>
                                             <span className="text-green-500">✔</span>
                                         </li>
                                         <li className="flex items-start justify-between">
                                             <div>
-                                                <p className="font-semibold text-gray-900">Get 10 messages to your app</p>
-                                                <p className="text-gray-600">Collect feedback from your users</p>
+                                                <p className="font-semibold text-gray-900">앱에 10개의 메시지 받기</p>
+                                                <p className="text-gray-600">사용자들로부터 피드백을 수집하세요</p>
                                             </div>
                                             <span className="text-green-500">✔</span>
                                         </li>
@@ -74,15 +74,15 @@ export default function Dashboard() {
 
                             {/* 2. Watch & Learn */}
                             <div className="mt-10 flex items-center justify-between">
-                                <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Watch & Learn 🔥</h2>
-                                <Link href="#" className="text-sm font-medium text-blue-600 hover:underline">View All Tutorials &gt;</Link>
+                                <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">배우고 따라하기 🔥</h2>
+                                <Link href="#" className="text-sm font-medium text-blue-600 hover:underline">모든 튜토리얼 보기 &gt;</Link>
                             </div>
                             <div className="mt-4 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
                                 {[
-                                    { title: 'Building your first AI app', desc: 'Learn how to build your very first AI app with the different options available.' },
-                                    { title: 'Generate Files', desc: 'Create AI apps that generate PowerPoints, PDFs, Word docs, CSVs and more.' },
-                                    { title: 'Monetize Your AI App', desc: 'Learn how to monetize your AI app with one-time payments and subscriptions.' },
-                                    { title: 'Build Your AI Studio', desc: 'Learn how to bundle your apps as a subscription service.' },
+                                    { title: '첫 번째 AI 앱 만들기', desc: '다양한 옵션을 사용하여 첫 번째 AI 앱을 만드는 방법을 배워보세요.' },
+                                    { title: '파일 생성하기', desc: 'PowerPoint, PDF, Word 문서, CSV 등을 생성하는 AI 앱을 만들어보세요.' },
+                                    { title: 'AI 앱 수익화하기', desc: '일회성 결제와 구독을 통해 AI 앱을 수익화하는 방법을 배워보세요.' },
+                                    { title: 'AI 스튜디오 구축하기', desc: '앱들을 구독 서비스로 묶는 방법을 배워보세요.' },
                                 ].map((card, idx) => (
                                     <div key={idx} className="overflow-hidden rounded-2xl border border-gray-200 bg-white">
                                         <div className="h-40 w-full bg-gradient-to-r from-fuchsia-400 via-orange-300 to-amber-300" />
@@ -96,7 +96,7 @@ export default function Dashboard() {
 
                             {/* 3. Your AI Apps */}
                             <div className="mt-10 flex items-center justify-between">
-                                <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">Your AI Apps 💰</h2>
+                                <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">내 AI 앱들 💰</h2>
                                 <Link href="/create-app" className="rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800">Create App</Link>
                             </div>
                             <div className="mt-4 rounded-2xl border border-gray-200 bg-white p-4">
@@ -121,7 +121,7 @@ export default function Dashboard() {
                                                     </td>
                                                     <td className="py-4"><Link href="#" className="text-blue-600 hover:underline">app-{i} ↗</Link></td>
                                                     <td className="py-4 text-gray-500">NA</td>
-                                                    <td className="py-4"><Link href="#" className="text-blue-600 hover:underline">Analytics</Link></td>
+                                                    <td className="py-4"><Link href={`/analytics/app-${i}`} className="text-blue-600 hover:underline">Analytics</Link></td>
                                                     <td className="py-4"><Link href="#" className="text-blue-600 hover:underline">Embed ↓</Link> <span className="mx-1">/</span> <Link href="#" className="text-blue-600 hover:underline">Publish ↑</Link></td>
                                                 </tr>
                                             ))}
