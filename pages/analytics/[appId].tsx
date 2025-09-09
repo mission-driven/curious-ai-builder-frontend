@@ -12,12 +12,31 @@ type AnalyticsData = {
     totalViews: number
 }
 
+type Prompt = {
+    id: string
+    userId: string
+    userName: string
+    prompt: string
+    response: string
+    timestamp: string
+}
+
+type PromptsData = {
+    prompts: Prompt[]
+    totalCount: number
+    page: number
+    limit: number
+}
+
 export default function AnalyticsPage() {
     const router = useRouter()
     const { appId } = router.query
     const [analytics, setAnalytics] = useState<AnalyticsData | null>(null)
+    const [prompts, setPrompts] = useState<PromptsData | null>(null)
     const [loading, setLoading] = useState(true)
+    const [promptsLoading, setPromptsLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
+    const [promptsError, setPromptsError] = useState<string | null>(null)
 
     useEffect(() => {
         if (!appId) return
@@ -40,7 +59,26 @@ export default function AnalyticsPage() {
             }
         }
 
+        const fetchPrompts = async () => {
+            try {
+                setPromptsLoading(true)
+                const response = await fetch(`/api/prompts/${appId}?page=1&limit=20`)
+
+                if (!response.ok) {
+                    throw new Error('Failed to fetch prompts')
+                }
+
+                const data = await response.json()
+                setPrompts(data)
+            } catch (err) {
+                setPromptsError(err instanceof Error ? err.message : 'An error occurred')
+            } finally {
+                setPromptsLoading(false)
+            }
+        }
+
         fetchAnalytics()
+        fetchPrompts()
     }, [appId])
 
     if (loading) {
@@ -121,15 +159,61 @@ export default function AnalyticsPage() {
                                 ))}
                             </div>
 
-                            {/* Last prompts - TODO: 별도 API로 분리 예정 */}
+                            {/* Last prompts */}
                             <p className="mt-10 text-lg font-semibold text-gray-900">
-                                최근 100개 프롬프트 by 사용자 ({analytics.totalMessages} 총계)
+                                최근 프롬프트 by 사용자 ({prompts?.totalCount || 0} 총계)
                             </p>
                             <div className="mt-3 overflow-hidden rounded-2xl border border-gray-200 bg-white">
-                                <div className="p-8 text-center text-gray-500">
-                                    <p>프롬프트 데이터는 별도 API로 관리됩니다.</p>
-                                    <p className="text-sm mt-2">TODO: /api/prompts/[appId] 구현 예정</p>
-                                </div>
+                                {promptsLoading ? (
+                                    <div className="p-8 text-center text-gray-500">
+                                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-gray-900 mx-auto"></div>
+                                        <p className="mt-2">프롬프트 로딩 중...</p>
+                                    </div>
+                                ) : promptsError ? (
+                                    <div className="p-8 text-center text-red-500">
+                                        <p>프롬프트 로드 실패: {promptsError}</p>
+                                    </div>
+                                ) : prompts && prompts.prompts.length > 0 ? (
+                                    <div className="max-h-96 overflow-y-auto">
+                                        <table className="w-full text-left text-sm">
+                                            <thead className="bg-gray-50 text-gray-500 sticky top-0">
+                                                <tr>
+                                                    <th className="px-4 py-3">사용자</th>
+                                                    <th className="px-4 py-3">프롬프트</th>
+                                                    <th className="px-4 py-3">응답</th>
+                                                    <th className="px-4 py-3">시간</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody className="divide-y divide-gray-100 text-gray-900">
+                                                {prompts.prompts.map((prompt) => (
+                                                    <tr key={prompt.id}>
+                                                        <td className="px-4 py-3">
+                                                            <div className="flex items-center gap-2">
+                                                                <div className="grid h-6 w-6 place-items-center rounded-full bg-indigo-100 text-xs text-indigo-700">
+                                                                    {prompt.userName.slice(0, 1)}
+                                                                </div>
+                                                                <span className="text-sm">{prompt.userName}</span>
+                                                            </div>
+                                                        </td>
+                                                        <td className="px-4 py-3 max-w-xs">
+                                                            <p className="truncate text-sm">{prompt.prompt}</p>
+                                                        </td>
+                                                        <td className="px-4 py-3 max-w-xs">
+                                                            <p className="truncate text-sm">{prompt.response}</p>
+                                                        </td>
+                                                        <td className="px-4 py-3 text-sm text-gray-500">
+                                                            {new Date(prompt.timestamp).toLocaleString('ko-KR')}
+                                                        </td>
+                                                    </tr>
+                                                ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                ) : (
+                                    <div className="p-8 text-center text-gray-500">
+                                        <p>프롬프트 데이터가 없습니다.</p>
+                                    </div>
+                                )}
                             </div>
 
                             <button className="mt-4 rounded-xl bg-gray-900 px-4 py-2 text-sm font-semibold text-white hover:bg-gray-800">Pro Plus 구독하기</button>
