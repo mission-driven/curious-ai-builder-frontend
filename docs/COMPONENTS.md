@@ -1,7 +1,7 @@
 # Components
 
 ## Overview
-프로젝트의 React 컴포넌트들을 관리하는 디렉토리입니다. 현재 2개의 주요 사이드바 컴포넌트와 1개의 인증 컴포넌트가 있습니다.
+프로젝트의 React 컴포넌트들을 관리하는 디렉토리입니다. 현재 2개의 주요 사이드바 컴포넌트, 1개의 인증 컴포넌트, 1개의 앱 뷰 컴포넌트가 있습니다.
 
 ## Components List
 
@@ -23,3 +23,14 @@
 **사용 페이지**: Login, Signup 페이지
 
 **설명**: 버튼 클릭 시 카카오 SDK 로그인 플로우를 시작하고, 성공 시 `/api/auth/kakao/callback?access_token=...`으로 리다이렉트합니다. 세션 쿠키는 서버 콜백에서 HttpOnly; Secure로 설정되며, 프론트에서는 토큰을 저장하지 않습니다.
+
+### 4. AppView
+**위치**: `components/AppView/`  
+**용도**: AI 앱 미리보기 및 메인 콘텐츠 영역  
+**사용 페이지**: Editor 페이지 (`/editor`)
+
+**설명**: AI 앱 빌더의 메인 콘텐츠 영역을 담당하는 컴포넌트입니다. 스크린샷 레이아웃에 맞춰 다음 서브컴포넌트로 구성됩니다.
+- `AppHeader`: 상단 섹션 타이틀
+- `AppInfoCard`: 앱 아이콘/이름/설명 영역
+- `ConversationStarters`: 퍼플 버튼 2개 (대화 시작 프롬프트)
+- `ChatInput`: 화면 하단 입력창

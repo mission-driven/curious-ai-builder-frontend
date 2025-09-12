@@ -44,6 +44,11 @@ Next.js Pages Router를 사용한 파일 기반 라우팅 시스템입니다. �
 **용도**: AI 앱 빌더 (상세 설정 페이지)  
 **레이아웃**: AppBuilderSidebar + 미리보기 영역
 
+#### 6-1. app/[appId].tsx
+**경로**: `/app/[appId]` (동적 라우트)  
+**용도**: 고객이 접근하는 공개 앱 실행 페이지  
+**레이아웃**: 단독 `AppView` (사이드바 패딩 없음)
+
 
 ### Management Pages
 
@@ -96,6 +101,7 @@ Next.js Pages Router를 사용한 파일 기반 라우팅 시스템입니다. �
 ├── /dashboard                   # 대시보드
 ├── /create-app                  # 앱 생성 (모델 선택)
 ├── /editor                      # 앱 빌더
+├── /app/[appId]                 # 공개 앱 실행 (동적)
 ├── /marketplace                 # 마켓플레이스
 ├── /users                       # 사용자 관리
 ├── /analytics/[appId]           # 앱 분석 (동적)

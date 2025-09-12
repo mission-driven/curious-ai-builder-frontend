@@ -20,7 +20,7 @@
   .pl-sidebar {
     padding-left: var(--sidebar-width);
   }
-  
+
   /* 사이드바 자체의 너비를 지정하는 유틸리티 클래스 */
   /* 사이드바 컴포넌트에서 사용 */
   .w-sidebar {
