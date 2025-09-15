@@ -16,7 +16,7 @@ export default function AppView({
 }: AppViewProps) {
     return (
         <main className="min-h-screen bg-[#0F0F10]">
-            <div className="w-full">
+            <div className="w-full max-w-3xl mx-auto">
                 <section className="flex-1">
                     <AppHeader title="app display name" />
                     <div className="px-6 py-4">

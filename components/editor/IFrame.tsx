@@ -77,4 +77,3 @@ export default function IFrame({ title = 'App Preview', className, htmlAttrs = {
         </iframe>
     )
 }
-

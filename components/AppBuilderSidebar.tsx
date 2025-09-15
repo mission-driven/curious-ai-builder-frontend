@@ -344,7 +344,6 @@ function CreditsTab() {
         </div>
     )
 }
-
 // Actions Tab Component
 function ActionsTab() {
     return (
@@ -568,3 +567,4 @@ function MoreTab() {
         </div>
     )
 }
+

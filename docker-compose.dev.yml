@@ -16,10 +16,10 @@ services:
       - NODE_ENV=development
       # 도커 바인드 마운트에서 파일 변경 이벤트가 누락되는 걸 막기 위해
       # 파일 감시를 "폴링" 방식으로 강제합니다.
-      #- CHOKIDAR_USEPOLLING=true # Next가 쓰는 chokidar를 폴링 모드로 전환 (이벤트 대신 주기적 스캔)
-      #- CHOKIDAR_INTERVAL=100
+      - CHOKIDAR_USEPOLLING=true # Next가 쓰는 chokidar를 폴링 모드로 전환 (이벤트 대신 주기적 스캔)
+      - CHOKIDAR_INTERVAL=100
       # 폴링 주기(ms). 낮을수록 반응 빠름/CPU 사용 증가.
       # 권장 100~500; 느리면 ↓값, 과열/소음이면 ↑값
-      #- WATCHPACK_POLLING=true
+      - WATCHPACK_POLLING=true
       # Webpack(Watchpack)도 폴링 사용.
       # 모듈 그래프/HMR/라우트 등록 갱신을 더 안정적으로 감지
