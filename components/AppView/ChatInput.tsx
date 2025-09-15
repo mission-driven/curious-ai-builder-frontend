@@ -15,7 +15,7 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
             const text = textareaRef.current.value
             const textareaWidth = textareaRef.current.offsetWidth
             const fontSize = 16 // 기본 폰트 크기 (px)
-            const charWidth = fontSize * 0.75 // 대략적인 문자 폭 (fontSize의 60% -> 65%로 조정)
+            const charWidth = fontSize * 0.75 // 대략적인 문자 폭 (fontSize의 60% -> 75%로 조정)
             const charsPerLine = Math.floor(textareaWidth / charWidth)
 
             // \n으로 문장을 자름

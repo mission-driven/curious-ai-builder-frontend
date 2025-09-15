@@ -57,26 +57,26 @@ export default function BasicTab({ config, onUpdate }: BasicTabProps) {
                 </label>
             </div>
 
-            {/* AI Name */}
+            {/* AI ID */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">AI 이름 <span className="text-red-500">*</span></h4>
+                <h4 className="mb-2 font-medium text-gray-900">AI ID <span className="text-red-500">*</span></h4>
                 <input
                     type="text"
                     value={config.aiName}
                     onChange={(e) => onUpdate({ aiName: e.target.value })}
-                    placeholder="앱 이름을 입력하세요"
+                    placeholder="AI ID를 입력하세요"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
             </div>
 
-            {/* Display Name */}
+            {/* AI Name */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">표시 이름</h4>
+                <h4 className="mb-2 font-medium text-gray-900">AI 이름</h4>
                 <input
                     type="text"
                     value={config.displayName}
                     onChange={(e) => onUpdate({ displayName: e.target.value })}
-                    placeholder="앱 표시 이름"
+                    placeholder="AI 이름을 입력하세요"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
             </div>
