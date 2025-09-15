@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 export type DeviceType = 'tablet-landscape' | 'tablet-portrait' | 'mobile'
 
-interface DeviceSelectorProps {
+interface EditorHeaderProps {
     onDeviceChange?: (device: DeviceType, dimensions: { width: string; height: string }) => void
     onCreateApp?: () => void
 }
@@ -50,7 +50,7 @@ const DEVICES: DeviceConfig[] = [
     }
 ]
 
-export default function DeviceSelector({ onDeviceChange, onCreateApp }: DeviceSelectorProps) {
+export default function EditorHeader({ onDeviceChange, onCreateApp }: EditorHeaderProps) {
     const [selectedDevice, setSelectedDevice] = useState<DeviceType>('mobile')
 
     const handleDeviceSelect = (device: DeviceType) => {

@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
-import { DeviceType } from '../components/editor/DeviceSelector'
+import { DeviceType } from '../components/editor/EditorHeader'
 import { EditorConfig } from '../components/editor/types'
 
 const AppBuilderSidebar = dynamic(() => import('../components/editor/AppBuilderSidebar'), { ssr: false })
 const AppView = dynamic(() => import('../components/AppView'), { ssr: false })
 const IFrame = dynamic(() => import('../components/editor/IFrame'), { ssr: false })
-const DeviceSelector = dynamic(() => import('../components/editor/DeviceSelector'), { ssr: false })
+const EditorHeader = dynamic(() => import('../components/editor/EditorHeader'), { ssr: false })
 
 export default function EditorPage() {
     const [deviceDimensions, setDeviceDimensions] = useState({ width: '375px', height: '812px' })
@@ -40,7 +40,7 @@ export default function EditorPage() {
             </Head>
             <AppBuilderSidebar onConfigChange={handleConfigChange} />
             <div className="min-h-screen bg-white pl-app-builder-sidebar">
-                <DeviceSelector onDeviceChange={handleDeviceChange} onCreateApp={handleCreateApp} />
+                <EditorHeader onDeviceChange={handleDeviceChange} onCreateApp={handleCreateApp} />
                 <div className="flex justify-center p-4">
                     <div
                         className="border border-gray-300 rounded-lg overflow-hidden"
