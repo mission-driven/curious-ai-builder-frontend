@@ -4,6 +4,7 @@ export type DeviceType = 'tablet-landscape' | 'tablet-portrait' | 'mobile'
 
 interface DeviceSelectorProps {
     onDeviceChange?: (device: DeviceType, dimensions: { width: string; height: string }) => void
+    onCreateApp?: () => void
 }
 
 interface DeviceConfig {
@@ -49,7 +50,7 @@ const DEVICES: DeviceConfig[] = [
     }
 ]
 
-export default function DeviceSelector({ onDeviceChange }: DeviceSelectorProps) {
+export default function DeviceSelector({ onDeviceChange, onCreateApp }: DeviceSelectorProps) {
     const [selectedDevice, setSelectedDevice] = useState<DeviceType>('mobile')
 
     const handleDeviceSelect = (device: DeviceType) => {
@@ -82,7 +83,10 @@ export default function DeviceSelector({ onDeviceChange }: DeviceSelectorProps) 
             </div>
 
             {/* Create App Button */}
-            <button className="px-4 py-2 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors">
+            <button
+                onClick={onCreateApp}
+                className="px-4 py-2 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors"
+            >
                 앱 생성
             </button>
         </div>
