@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 
 interface ChatInputProps {
     onSendMessage?: (message: string) => void
@@ -40,7 +40,6 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
         if (textareaRef.current) {
             setRows(1)
             setInputValue('')
-            console.log('resetTextarea')
         }
     }
 
@@ -71,7 +70,7 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
                         adjustRows()
                     }}
                     onKeyPress={handleKeyPress}
-                    placeholder="Type your message"
+                    placeholder="메시지를 입력하세요"
                     className="flex-1 min-w-0 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-transparent border-none resize-none overflow-y-auto"
                     rows={rows}
                 />

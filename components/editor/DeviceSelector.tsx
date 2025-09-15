@@ -16,7 +16,7 @@ interface DeviceConfig {
 const DEVICES: DeviceConfig[] = [
     {
         id: 'tablet-landscape',
-        label: 'Tablet Landscape',
+        label: '태블릿 가로',
         dimensions: { width: '1024px', height: '768px' },
         icon: (
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -27,7 +27,7 @@ const DEVICES: DeviceConfig[] = [
     },
     {
         id: 'tablet-portrait',
-        label: 'Tablet Portrait',
+        label: '태블릿 세로',
         dimensions: { width: '768px', height: '1024px' },
         icon: (
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -38,7 +38,7 @@ const DEVICES: DeviceConfig[] = [
     },
     {
         id: 'mobile',
-        label: 'Mobile',
+        label: '모바일',
         dimensions: { width: '375px', height: '812px' },
         icon: (
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -70,8 +70,8 @@ export default function DeviceSelector({ onDeviceChange }: DeviceSelectorProps) 
                             key={device.id}
                             onClick={() => handleDeviceSelect(device.id)}
                             className={`w-10 h-10 flex items-center justify-center rounded-lg border transition-colors ${selectedDevice === device.id
-                                    ? 'bg-blue-100 border-blue-300 text-blue-600'
-                                    : 'bg-gray-100 border-gray-300 text-gray-600 hover:bg-gray-200'
+                                ? 'bg-blue-100 border-blue-300 text-blue-600'
+                                : 'bg-gray-100 border-gray-300 text-gray-600 hover:bg-gray-200'
                                 }`}
                             title={device.label}
                         >
@@ -83,7 +83,7 @@ export default function DeviceSelector({ onDeviceChange }: DeviceSelectorProps) 
 
             {/* Create App Button */}
             <button className="px-4 py-2 bg-gray-800 text-white rounded-lg text-sm font-medium hover:bg-gray-700 transition-colors">
-                Create app
+                앱 생성
             </button>
         </div>
     )

@@ -10,15 +10,15 @@ interface AppViewProps {
 }
 
 export default function AppView({
-    appName = 'app display name',
-    appDescription = 'Write your description here',
-    starters = ['Conversation Starter 1', 'Conversation Starter 2']
+    appName = '앱 표시 이름',
+    appDescription = '여기에 설명을 작성하세요',
+    starters = ['대화 시작하기 1', '대화 시작하기 2']
 }: AppViewProps) {
     return (
         <main className="min-h-screen bg-[#0F0F10]">
             <div className="w-full max-w-3xl mx-auto">
                 <section className="flex-1">
-                    <AppHeader title="app display name" />
+                    <AppHeader title="앱 표시 이름" />
                     <div className="px-6 py-4">
                         <AppInfoCard name={appName} description={appDescription} />
                         <ConversationStarters items={starters} />

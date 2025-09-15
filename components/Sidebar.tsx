@@ -32,17 +32,17 @@ export default function Sidebar() {
 
             {/* Navigation */}
             <nav className="mt-6 flex-1">
-                <NavSection title="Dashboard" />
-                <NavItem href="/dashboard" active={currentPath === '/dashboard'}>Dashboard</NavItem>
+                <NavSection title="대시보드" />
+                <NavItem href="/dashboard" active={currentPath === '/dashboard'}>대시보드</NavItem>
 
-                <NavSection title="Manage" />
-                <NavItem href="/marketplace" active={currentPath === '/marketplace'}>Marketplace</NavItem>
-                <NavItem href="/users" active={currentPath === '/users'}>Users</NavItem>
+                <NavSection title="관리" />
+                <NavItem href="/marketplace" active={currentPath === '/marketplace'}>마켓플레이스</NavItem>
+                <NavItem href="/users" active={currentPath === '/users'}>사용자</NavItem>
             </nav>
 
             {/* Support */}
             <div className="mt-auto">
-                <NavSection title="Support" />
+                <NavSection title="지원" />
                 <NavItem href="#" active={false}>도움말 센터</NavItem>
                 <NavItem href="#" active={false}>문의하기</NavItem>
             </div>

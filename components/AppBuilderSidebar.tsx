@@ -8,11 +8,11 @@ interface TabConfig {
 }
 
 const TABS: TabConfig[] = [
-    { id: 'basic', label: 'Basic' },
-    { id: 'design', label: 'Design' },
-    { id: 'credits', label: 'Credits' },
-    { id: 'actions', label: 'Actions' },
-    { id: 'more', label: 'More' },
+    { id: 'basic', label: '기본' },
+    { id: 'design', label: '디자인' },
+    { id: 'credits', label: '크레딧' },
+    { id: 'actions', label: '액션' },
+    { id: 'more', label: '더보기' },
 ]
 
 interface AppBuilderSidebarProps {
@@ -31,8 +31,8 @@ export default function AppBuilderSidebar({ onTabChange }: AppBuilderSidebarProp
         <aside className="fixed left-0 top-0 z-50 h-screen w-app-builder-sidebar flex flex-col border-r border-gray-200 bg-white">
             {/* Header */}
             <div className="border-b border-gray-200 p-4">
-                <h2 className="text-lg font-semibold text-gray-900">App Builder</h2>
-                <p className="text-sm text-gray-600">Configure your AI app</p>
+                <h2 className="text-lg font-semibold text-gray-900">앱 빌더</h2>
+                <p className="text-sm text-gray-600">AI 앱을 구성하세요</p>
             </div>
 
             {/* Tab Navigation */}
@@ -69,38 +69,38 @@ export default function AppBuilderSidebar({ onTabChange }: AppBuilderSidebarProp
 function BasicTab() {
     return (
         <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900">Basic Settings</h3>
+            <h3 className="text-lg font-semibold text-gray-900">기본 설정</h3>
 
             {/* AI Copilot */}
             <div>
                 <div className="mb-2 flex items-center gap-2">
-                    <h4 className="font-medium text-gray-900">AI Copilot</h4>
-                    <span className="rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">Beta</span>
+                    <h4 className="font-medium text-gray-900">AI 코파일럿</h4>
+                    <span className="rounded-full bg-yellow-100 px-2 py-1 text-xs font-medium text-yellow-800">베타</span>
                 </div>
                 <textarea
-                    placeholder="Example: Create an educational chatbot that helps students learn math"
+                    placeholder="예: 학생들이 수학을 배우는 데 도움이 되는 교육용 챗봇을 만들어주세요"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     rows={3}
                 />
-                <p className="mt-1 text-xs text-gray-600">Describe your app idea to generate everything automatically</p>
+                <p className="mt-1 text-xs text-gray-600">앱 아이디어를 설명하면 모든 것을 자동으로 생성합니다</p>
                 <button className="mt-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700">
-                    Generate
+                    생성하기
                 </button>
             </div>
 
             {/* Upload Image */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Upload Image</h4>
+                <h4 className="mb-2 font-medium text-gray-900">이미지 업로드</h4>
                 <button className="flex items-center gap-2 rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:border-gray-400">
                     <span className="text-lg">+</span>
-                    Choose Image
+                    이미지 선택
                 </button>
-                <p className="mt-1 text-xs text-gray-500">No image selected</p>
+                <p className="mt-1 text-xs text-gray-500">선택된 이미지 없음</p>
             </div>
 
             {/* AI Model */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">AI Model</h4>
+                <h4 className="mb-2 font-medium text-gray-900">AI 모델</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
                     <option>GPT-5 Mini (OpenAI)</option>
                     <option>Claude 3.5 Sonnet</option>
@@ -108,35 +108,35 @@ function BasicTab() {
                 </select>
                 <label className="mt-2 flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Show All Models</span>
+                    <span className="text-sm text-gray-700">모든 모델 보기</span>
                 </label>
             </div>
 
             {/* AI Name */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">AI Name <span className="text-red-500">*</span></h4>
+                <h4 className="mb-2 font-medium text-gray-900">AI 이름 <span className="text-red-500">*</span></h4>
                 <input
                     type="text"
-                    placeholder="Enter your app name"
+                    placeholder="앱 이름을 입력하세요"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
             </div>
 
             {/* Display Name */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Display Name</h4>
+                <h4 className="mb-2 font-medium text-gray-900">표시 이름</h4>
                 <input
                     type="text"
-                    placeholder="app display name"
+                    placeholder="앱 표시 이름"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                 />
             </div>
 
             {/* AI Description */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">AI Description <span className="text-red-500">*</span></h4>
+                <h4 className="mb-2 font-medium text-gray-900">AI 설명 <span className="text-red-500">*</span></h4>
                 <textarea
-                    placeholder="Write your description here"
+                    placeholder="설명을 작성하세요"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     rows={3}
                 />
@@ -145,11 +145,11 @@ function BasicTab() {
             {/* Prompt */}
             <div>
                 <div className="mb-2 flex items-center justify-between">
-                    <h4 className="font-medium text-gray-900">Prompt</h4>
+                    <h4 className="font-medium text-gray-900">프롬프트</h4>
                     <button className="text-gray-400 hover:text-gray-600">⤢</button>
                 </div>
                 <textarea
-                    placeholder="Enter a prompt for your AI...ex:- You are a bot called JokeAI whose job is to reply with jokes to anything. Keep your responses short."
+                    placeholder="AI를 위한 프롬프트를 입력하세요...예: 당신은 JokeAI라는 봇으로, 모든 것에 대해 농담으로 답변하는 것이 일입니다. 응답을 짧게 유지하세요."
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     rows={4}
                 />
@@ -157,13 +157,13 @@ function BasicTab() {
 
             {/* Welcome Message */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Welcome Message</h4>
+                <h4 className="mb-2 font-medium text-gray-900">환영 메시지</h4>
                 <textarea
-                    placeholder="Enter a welcome message"
+                    placeholder="환영 메시지를 입력하세요"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
                     rows={3}
                 />
-                <p className="mt-1 text-xs text-gray-500">Supports HTML and JS.</p>
+                <p className="mt-1 text-xs text-gray-500">HTML과 JS를 지원합니다.</p>
             </div>
 
             {/* Turn off Login */}
@@ -171,7 +171,7 @@ function BasicTab() {
                 <label className="flex items-start gap-2">
                     <input type="checkbox" className="mt-1 rounded border-gray-300" />
                     <span className="text-sm text-gray-700">
-                        Turn off Login (All usage will be logged against your account, and chat history and monetization will be disabled)
+                        로그인 비활성화 (모든 사용량이 귀하의 계정에 기록되며, 채팅 기록과 수익화가 비활성화됩니다)
                     </span>
                 </label>
             </div>
@@ -183,11 +183,11 @@ function BasicTab() {
 function DesignTab() {
     return (
         <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900">Design Settings</h3>
+            <h3 className="text-lg font-semibold text-gray-900">디자인 설정</h3>
 
             {/* AI App Theme */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">AI App Theme</h4>
+                <h4 className="mb-2 font-medium text-gray-900">AI 앱 테마</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
                     <option>LA</option>
                     <option>NYC</option>
@@ -197,17 +197,17 @@ function DesignTab() {
 
             {/* Background Color */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Background Color</h4>
+                <h4 className="mb-2 font-medium text-gray-900">배경색</h4>
                 <div className="flex items-center gap-3">
                     <input type="color" className="h-10 w-16 rounded border border-gray-300" defaultValue="#000000" />
                     <input type="range" min="0" max="100" className="flex-1" />
                 </div>
-                <p className="mt-1 text-xs text-gray-600">Provide an Opacity Percentage for the change to be saved.</p>
+                <p className="mt-1 text-xs text-gray-600">변경사항을 저장하려면 불투명도 퍼센트를 제공하세요.</p>
             </div>
 
             {/* Opacity Percentage */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Opacity Percentage %</h4>
+                <h4 className="mb-2 font-medium text-gray-900">불투명도 퍼센트 %</h4>
                 <input
                     type="number"
                     placeholder="0-100"
@@ -217,7 +217,7 @@ function DesignTab() {
 
             {/* Font Color */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Font Color</h4>
+                <h4 className="mb-2 font-medium text-gray-900">글꼴 색상</h4>
                 <div className="flex items-center gap-3">
                     <input type="color" className="h-10 w-16 rounded border border-gray-300" defaultValue="#ffffff" />
                     <input type="range" min="0" max="100" className="flex-1" />
@@ -226,9 +226,9 @@ function DesignTab() {
 
             {/* Font Face */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Font Face</h4>
+                <h4 className="mb-2 font-medium text-gray-900">글꼴</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
-                    <option>Default</option>
+                    <option>기본</option>
                     <option>Arial</option>
                     <option>Helvetica</option>
                 </select>
@@ -238,33 +238,33 @@ function DesignTab() {
             <div className="space-y-3">
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Enable right to left</span>
+                    <span className="text-sm text-gray-700">오른쪽에서 왼쪽으로 활성화</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700">Enable Feedback Button</span>
+                    <span className="text-sm text-gray-700">피드백 버튼 활성화</span>
                 </label>
             </div>
 
             {/* Custom User Avatar */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Custom User Avatar (optional)</h4>
+                <h4 className="mb-2 font-medium text-gray-900">사용자 아바타 (선택사항)</h4>
                 <button className="rounded-lg border border-gray-300 px-4 py-2 text-sm text-gray-700 hover:border-gray-400">
-                    + Choose Image
+                    + 이미지 선택
                 </button>
             </div>
 
             {/* Conversation Starters */}
             {[1, 2, 3, 4].map((num) => (
                 <div key={num}>
-                    <h4 className="mb-2 font-medium text-gray-900">Conversation Starter #{num}</h4>
+                    <h4 className="mb-2 font-medium text-gray-900">대화 시작하기 #{num}</h4>
                     <input
                         type="text"
-                        placeholder={`Enter conversation starter #${num}`}
+                        placeholder={`대화 시작하기 #${num} 입력`}
                         className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none"
                     />
                     <p className="mt-1 text-xs text-gray-600">
-                        Add a conversation starter to help users begin interacting with your app.
+                        사용자가 앱과 상호작용을 시작할 수 있도록 대화 시작하기를 추가하세요.
                     </p>
                 </div>
             ))}
@@ -276,44 +276,44 @@ function DesignTab() {
 function CreditsTab() {
     return (
         <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900">Credits Settings</h3>
+            <h3 className="text-lg font-semibold text-gray-900">크레딧 설정</h3>
 
             {/* Free Chats */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Free Chats (Subscription Required)</h4>
+                <h4 className="mb-2 font-medium text-gray-900">무료 채팅 (구독 필요)</h4>
                 <input
                     type="number"
-                    placeholder="Ex:- 10"
+                    placeholder="예: 10"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none"
                 />
                 <p className="mt-1 text-xs text-gray-600">
-                    No. of chat credits each new user will get. Leave blank for unlimited free chats. Required if monetization is enabled.
+                    각 신규 사용자가 받을 채팅 크레딧 수입니다. 무제한 무료 채팅을 원하면 비워두세요. 수익화가 활성화된 경우 필수입니다.
                 </p>
                 <label className="mt-3 flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Reset Free Chats Monthly (Subscription Required)</span>
+                    <span className="text-sm text-gray-700">매월 무료 채팅 재설정 (구독 필요)</span>
                 </label>
             </div>
 
             {/* Monetization Terms */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Monetization Terms</h4>
+                <h4 className="mb-2 font-medium text-gray-900">수익화 조건</h4>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700">Disable Payments (Subscription Required)</span>
+                    <span className="text-sm text-gray-700">결제 비활성화 (구독 필요)</span>
                 </label>
 
                 <div className="mt-4 space-y-3">
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Monetization Type</label>
+                        <label className="block text-sm font-medium text-gray-700">수익화 유형</label>
                         <select className="mt-1 w-full rounded-lg border border-gray-300 p-2 text-sm">
-                            <option>One-time Payments</option>
-                            <option>Subscription</option>
+                            <option>일회성 결제</option>
+                            <option>구독</option>
                         </select>
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Currency</label>
+                        <label className="block text-sm font-medium text-gray-700">통화</label>
                         <select className="mt-1 w-full rounded-lg border border-gray-300 p-2 text-sm">
                             <option>USD</option>
                             <option>EUR</option>
@@ -322,7 +322,7 @@ function CreditsTab() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Price</label>
+                        <label className="block text-sm font-medium text-gray-700">가격</label>
                         <input
                             type="number"
                             step="0.01"
@@ -332,7 +332,7 @@ function CreditsTab() {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-gray-700">Number of Chats for Price</label>
+                        <label className="block text-sm font-medium text-gray-700">가격당 채팅 수</label>
                         <input
                             type="number"
                             defaultValue="1"
@@ -348,90 +348,90 @@ function CreditsTab() {
 function ActionsTab() {
     return (
         <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900">Actions Settings</h3>
+            <h3 className="text-lg font-semibold text-gray-900">액션 설정</h3>
 
             {/* Tools */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Tools</h4>
+                <h4 className="mb-2 font-medium text-gray-900">도구</h4>
                 <div className="mb-3 rounded-lg bg-yellow-50 border border-yellow-200 p-3">
                     <p className="text-sm text-yellow-800">
-                        Note: Each tool call may slow down response times as additional processing is required.
+                        참고: 각 도구 호출은 추가 처리가 필요하므로 응답 시간이 느려질 수 있습니다.
                     </p>
                 </div>
 
                 <div className="space-y-3">
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Turn on File Generation (GPT models*)</span>
+                        <span className="text-sm text-gray-700">파일 생성 켜기 (GPT 모델*)</span>
                     </label>
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Enable Google Search (1 extra prompt will be used per request)</span>
+                        <span className="text-sm text-gray-700">구글 검색 활성화 (요청당 1개의 추가 프롬프트 사용)</span>
                     </label>
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Enable Date and Time Tool (Current date will be used in responses)</span>
+                        <span className="text-sm text-gray-700">날짜 및 시간 도구 활성화 (응답에 현재 날짜 사용)</span>
                     </label>
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Enable Image generation (1 extra prompt will be used per request)</span>
+                        <span className="text-sm text-gray-700">이미지 생성 활성화 (요청당 1개의 추가 프롬프트 사용)</span>
                     </label>
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Enable Stock Analysis Tool (Learn more here)</span>
+                        <span className="text-sm text-gray-700">주식 분석 도구 활성화 (자세히 보기)</span>
                     </label>
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Enable Speech Generation (Learn more here)</span>
+                        <span className="text-sm text-gray-700">음성 생성 활성화 (자세히 보기)</span>
                     </label>
                     <label className="flex items-center gap-2">
                         <input type="checkbox" className="rounded border-gray-300" />
-                        <span className="text-sm text-gray-700">Enable voice mode (reading responses)</span>
+                        <span className="text-sm text-gray-700">음성 모드 활성화 (응답 읽기)</span>
                     </label>
                 </div>
                 <p className="mt-2 text-xs text-gray-600">
-                    When enabled, app responses will be converted to speech and read aloud automatically.
+                    활성화되면 앱 응답이 음성으로 변환되어 자동으로 읽어집니다.
                 </p>
             </div>
 
             {/* Webhook URL */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Webhook URL</h4>
+                <h4 className="mb-2 font-medium text-gray-900">웹훅 URL</h4>
                 <input
                     type="url"
-                    placeholder="Enter webhook URL (e.g. Zapier, Make.com)"
+                    placeholder="웹훅 URL 입력 (예: Zapier, Make.com)"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none"
                 />
             </div>
 
             {/* Trigger When */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Trigger When:</h4>
+                <h4 className="mb-2 font-medium text-gray-900">트리거 조건:</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
-                    <option>Message is sent</option>
-                    <option>User logs in</option>
-                    <option>App starts</option>
+                    <option>메시지 전송 시</option>
+                    <option>사용자 로그인 시</option>
+                    <option>앱 시작 시</option>
                 </select>
             </div>
 
             <button className="flex items-center gap-2 rounded-lg bg-gray-900 px-4 py-2 text-sm font-medium text-white hover:bg-gray-800">
                 <span className="text-lg">+</span>
-                Add Webhook
+                웹훅 추가
             </button>
 
             {/* Sample webhook request body */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Sample webhook request body:</h4>
+                <h4 className="mb-2 font-medium text-gray-900">웹훅 요청 본문 예시:</h4>
                 <div className="rounded-lg bg-gray-100 p-3 text-xs">
                     <pre className="whitespace-pre-wrap text-gray-700">
                         {`{
-  "event": "Message sent",
+  "event": "메시지 전송",
   "timestamp": "2024-01-01T12:00:00.000Z",
-  "app_name": "My App",
+  "app_name": "내 앱",
   "user_email": "user@example.com",
-  "user_name": "John Doe",
-  "last_message": "User message",
-  "response": "App response message"
+  "user_name": "홍길동",
+  "last_message": "사용자 메시지",
+  "response": "앱 응답 메시지"
 }`}
                     </pre>
                 </div>
@@ -444,63 +444,63 @@ function ActionsTab() {
 function MoreTab() {
     return (
         <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-gray-900">More Settings</h3>
+            <h3 className="text-lg font-semibold text-gray-900">추가 설정</h3>
 
             {/* Access Code */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Access Code</h4>
+                <h4 className="mb-2 font-medium text-gray-900">접근 코드</h4>
                 <input
                     type="text"
-                    placeholder="Enter access code"
+                    placeholder="접근 코드 입력"
                     className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none"
                 />
                 <p className="mt-1 text-xs text-gray-600">
-                    App will require this code to be used. Leave blank for unrestricted access.
+                    앱 사용을 위해 이 코드가 필요합니다. 무제한 접근을 원하면 비워두세요.
                 </p>
             </div>
 
             {/* Login Display Language */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Login Display Language</h4>
+                <h4 className="mb-2 font-medium text-gray-900">로그인 표시 언어</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
-                    <option>English</option>
-                    <option>Korean</option>
-                    <option>Japanese</option>
+                    <option>영어</option>
+                    <option>한국어</option>
+                    <option>일본어</option>
                 </select>
                 <p className="mt-1 text-xs text-gray-600">
-                    This does not control the language of chats. Please adjust the prompt instead.
+                    이것은 채팅 언어를 제어하지 않습니다. 대신 프롬프트를 조정하세요.
                 </p>
             </div>
 
             {/* Maximum Response Size */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Maximum Response Size</h4>
+                <h4 className="mb-2 font-medium text-gray-900">최대 응답 크기</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
-                    <option>Medium</option>
-                    <option>Small</option>
-                    <option>Large</option>
+                    <option>중간</option>
+                    <option>작음</option>
+                    <option>큼</option>
                 </select>
                 <p className="mt-1 text-xs text-gray-600">
-                    Select the maximum response size for outputs. Larger sizes may result in longer response times.
+                    출력의 최대 응답 크기를 선택하세요. 더 큰 크기는 응답 시간이 길어질 수 있습니다.
                 </p>
             </div>
 
             {/* Verbosity */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Verbosity</h4>
+                <h4 className="mb-2 font-medium text-gray-900">상세도</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                    <option>낮음</option>
+                    <option>중간</option>
+                    <option>높음</option>
                 </select>
                 <p className="mt-1 text-xs text-gray-600">
-                    Controls the verbosity of responses. Lower values result in more concise responses, higher values in more verbose responses.
+                    응답의 상세도를 제어합니다. 낮은 값은 더 간결한 응답을, 높은 값은 더 상세한 응답을 제공합니다.
                 </p>
             </div>
 
             {/* Temperature */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Temperature</h4>
+                <h4 className="mb-2 font-medium text-gray-900">온도</h4>
                 <input
                     type="range"
                     min="0"
@@ -510,59 +510,59 @@ function MoreTab() {
                     className="w-full"
                 />
                 <div className="mt-1 flex justify-between text-xs text-gray-600">
-                    <span>0.0 Focused</span>
-                    <span>0.5 Balanced</span>
-                    <span>1.0 Creative</span>
+                    <span>0.0 집중</span>
+                    <span>0.5 균형</span>
+                    <span>1.0 창의적</span>
                 </div>
-                <p className="mt-1 text-xs text-gray-600">Controls randomness in responses.</p>
+                <p className="mt-1 text-xs text-gray-600">응답의 무작위성을 제어합니다.</p>
             </div>
 
             {/* Checkboxes */}
             <div className="space-y-3">
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Turn off File Uploads</span>
+                    <span className="text-sm text-gray-700">파일 업로드 비활성화</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700">Turn on Share Chat</span>
+                    <span className="text-sm text-gray-700">채팅 공유 활성화</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700">Enable Dictation (Voice Input)</span>
+                    <span className="text-sm text-gray-700">받아쓰기 활성화 (음성 입력)</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700">Display Chat History</span>
+                    <span className="text-sm text-gray-700">채팅 기록 표시</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Show Login on Page Load</span>
+                    <span className="text-sm text-gray-700">페이지 로드 시 로그인 표시</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" defaultChecked />
-                    <span className="text-sm text-gray-700">Save Conversations for Analytics</span>
+                    <span className="text-sm text-gray-700">분석을 위한 대화 저장</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Enable Pre-Chat Questions</span>
+                    <span className="text-sm text-gray-700">사전 채팅 질문 활성화</span>
                 </label>
                 <label className="flex items-center gap-2">
                     <input type="checkbox" className="rounded border-gray-300" />
-                    <span className="text-sm text-gray-700">Add White-Label Link (Pro Plus Plan Required)</span>
+                    <span className="text-sm text-gray-700">화이트라벨 링크 추가 (Pro Plus 플랜 필요)</span>
                 </label>
             </div>
 
             {/* Transcription Language */}
             <div>
-                <h4 className="mb-2 font-medium text-gray-900">Transcription Language</h4>
+                <h4 className="mb-2 font-medium text-gray-900">전사 언어</h4>
                 <select className="w-full rounded-lg border border-gray-300 p-3 text-sm focus:border-blue-500 focus:outline-none">
-                    <option>Detect language</option>
-                    <option>English</option>
-                    <option>Korean</option>
-                    <option>Japanese</option>
+                    <option>언어 자동 감지</option>
+                    <option>영어</option>
+                    <option>한국어</option>
+                    <option>일본어</option>
                 </select>
-                <p className="mt-1 text-xs text-gray-600">Select your preferred transcription language.</p>
+                <p className="mt-1 text-xs text-gray-600">선호하는 전사 언어를 선택하세요.</p>
             </div>
         </div>
     )
