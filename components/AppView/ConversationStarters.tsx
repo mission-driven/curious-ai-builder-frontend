@@ -17,4 +17,3 @@ export default function ConversationStarters({ items }: ConversationStartersProp
         </div>
     )
 }
-

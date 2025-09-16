@@ -36,13 +36,6 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
         }
     }
 
-    const resetTextarea = () => {
-        if (textareaRef.current) {
-            setRows(1)
-            setInputValue('')
-        }
-    }
-
     const handleSendMessage = () => {
         if (!inputValue.trim()) return
 
@@ -60,7 +53,7 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
 
     return (
         <div className="w-full fixed bottom-4 left-1/2 -translate-x-1/2 max-w-3xl mx-auto px-6">
-            <div className="flex flex-col space-y-2 bg-black border border-gray-600 rounded-lg px-3 py-3 h-auto">
+            <div className="flex flex-col space-y-2 border border-gray-600 rounded-lg px-3 py-3 h-auto">
                 <textarea
                     id="chat-input"
                     ref={textareaRef}
@@ -69,14 +62,13 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
                         setInputValue(e.target.value)
                         adjustRows()
                     }}
-                    onKeyPress={handleKeyPress}
                     placeholder="메시지를 입력하세요"
-                    className="flex-1 min-w-0 bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-transparent border-none resize-none overflow-y-auto"
+                    className="flex-1 min-w-0 bg-transparent placeholder-gray-400 focus:outline-none focus:ring-0 focus:border-transparent border-none resize-none overflow-y-auto"
                     rows={rows}
                 />
                 <div className="flex justify-between items-center">
                     {/* Attachment Icon (Paperclip) */}
-                    <button className="p-1 text-blue-400 hover:text-blue-300 transition-colors">
+                    <button className="p-1 hover:opacity-70 transition-opacity">
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 00-1-1z" clipRule="evenodd" />
                         </svg>
@@ -85,7 +77,7 @@ export default function ChatInput({ onSendMessage }: ChatInputProps) {
                     {/* Send Icon (Paper Airplane) */}
                     <button
                         onClick={handleSendMessage}
-                        className="p-1 text-blue-400 hover:text-blue-300 transition-colors"
+                        className="p-1 hover:opacity-70 transition-opacity"
                     >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                             <path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z" />
