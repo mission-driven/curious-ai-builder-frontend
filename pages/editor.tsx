@@ -1,8 +1,8 @@
 import Head from 'next/head'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { DeviceType } from '../components/editor/EditorHeader'
-import { EditorConfig } from '../components/editor/types'
+import { EditorConfig, AppViewConfig, defaultEditorConfig } from '../components/editor/types'
 
 const AppBuilderSidebar = dynamic(() => import('../components/editor/AppBuilderSidebar'), { ssr: false })
 const AppView = dynamic(() => import('../components/AppView'), { ssr: false })
@@ -11,7 +11,20 @@ const EditorHeader = dynamic(() => import('../components/editor/EditorHeader'), 
 
 export default function EditorPage() {
     const [deviceDimensions, setDeviceDimensions] = useState({ width: '375px', height: '812px' })
-    const [editorConfig, setEditorConfig] = useState<EditorConfig | null>(null)
+    const [editorConfig, setEditorConfig] = useState<EditorConfig>(defaultEditorConfig)
+    const [isLoading, setIsLoading] = useState(true)
+
+    // EditorConfig를 AppViewConfig로 변환하는 함수
+    const useAppViewConfig = (config: EditorConfig): AppViewConfig => {
+        return {
+            backgroundColor: config.design.backgroundColor,
+            fontColor: config.design.fontColor,
+            conversationStarters: config.design.conversationStarters,
+            theme: config.design.theme,
+            appName: config.basic.displayName,
+            appDescription: config.basic.aiDescription,
+        }
+    }
 
     const handleDeviceChange = (device: DeviceType, dimensions: { width: string; height: string }) => {
         setDeviceDimensions(dimensions)
@@ -23,14 +36,52 @@ export default function EditorPage() {
     }
 
     const handleCreateApp = () => {
-        if (editorConfig) {
-            console.log('=== 앱 생성 버튼 클릭 ===')
-            console.log('현재 설정값들:', editorConfig)
-            console.log('선택된 디바이스 크기:', deviceDimensions)
-            console.log('========================')
-        } else {
-            console.log('설정값이 아직 없습니다.')
+        console.log('=== 앱 생성 버튼 클릭 ===')
+        console.log('현재 설정값들:', editorConfig)
+        console.log('선택된 디바이스 크기:', deviceDimensions)
+        console.log('========================')
+
+        // TODO: 서버로 설정값 전송
+        // fetch('/api/apps/create', { method: 'POST', body: JSON.stringify(editorConfig) })
+    }
+
+    // 서버에서 기존 설정값 불러오기 (수정 상황)
+    useEffect(() => {
+        const loadSavedConfig = async () => {
+            try {
+                // TODO: 실제 appId를 URL 파라미터나 다른 방식으로 가져와야 함
+                const appId = 'example-app-id' // 임시값
+
+                const response = await fetch(`/api/apps/${appId}/config`)
+                if (response.ok) {
+                    const savedConfig = await response.json()
+                    setEditorConfig(savedConfig)
+                } else {
+                    // 기존 설정이 없으면 기본값 사용
+                    setEditorConfig(defaultEditorConfig)
+                }
+            } catch (error) {
+                console.error('설정 불러오기 실패:', error)
+                // 에러시 기본값 사용
+                setEditorConfig(defaultEditorConfig)
+            } finally {
+                setIsLoading(false)
+            }
         }
+
+        loadSavedConfig()
+    }, [])
+
+    // 로딩 중일 때
+    if (isLoading) {
+        return (
+            <div className="flex items-center justify-center min-h-screen">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900 mx-auto"></div>
+                    <p className="mt-2 text-gray-600">설정을 불러오는 중...</p>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -38,7 +89,7 @@ export default function EditorPage() {
             <Head>
                 <title>새 AI 앱 생성 - Curi-AI</title>
             </Head>
-            <AppBuilderSidebar onConfigChange={handleConfigChange} />
+            <AppBuilderSidebar config={editorConfig} onConfigChange={handleConfigChange} />
             <div className="min-h-screen bg-white pl-app-builder-sidebar">
                 <EditorHeader onDeviceChange={handleDeviceChange} onCreateApp={handleCreateApp} />
                 <div className="flex justify-center p-4">
@@ -64,7 +115,7 @@ export default function EditorPage() {
                                 </>
                             )}
                         >
-                            <AppView />
+                            <AppView config={useAppViewConfig(editorConfig)} />
                         </IFrame>
                     </div>
                 </div>

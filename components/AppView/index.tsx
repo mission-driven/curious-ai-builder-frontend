@@ -2,26 +2,32 @@ import AppHeader from './AppHeader'
 import AppInfoCard from './AppInfoCard'
 import ConversationStarters from './ConversationStarters'
 import ChatInput from './ChatInput'
+import { AppViewConfig } from '../editor/types'
 
 interface AppViewProps {
-    appName?: string;
-    appDescription?: string;
-    starters?: string[];
+    config: AppViewConfig
 }
 
-export default function AppView({
-    appName = '앱 표시 이름',
-    appDescription = '여기에 설명을 작성하세요',
-    starters = ['대화 시작하기 1', '대화 시작하기 2']
-}: AppViewProps) {
+export default function AppView({ config }: AppViewProps) {
     return (
-        <main className="min-h-screen bg-[#0F0F10]">
+        <main
+            className="min-h-screen"
+            style={{
+                backgroundColor: config.backgroundColor,
+                color: config.fontColor
+            }}
+        >
             <div className="w-full max-w-3xl mx-auto">
                 <section className="flex-1">
-                    <AppHeader title="앱 표시 이름" />
+                    <AppHeader title={config.appName} />
                     <div className="px-6 py-4">
-                        <AppInfoCard name={appName} description={appDescription} />
-                        <ConversationStarters items={starters} />
+                        <AppInfoCard
+                            name={config.appName}
+                            description={config.appDescription}
+                        />
+                        <ConversationStarters
+                            items={config.conversationStarters}
+                        />
                     </div>
                 </section>
             </div>

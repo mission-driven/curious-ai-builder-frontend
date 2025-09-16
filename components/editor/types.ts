@@ -69,6 +69,19 @@ export interface EditorConfig {
     }
 }
 
+// AppView용 설정 타입 (프리뷰에만 필요한 설정들)
+export interface AppViewConfig {
+    // 디자인 관련
+    backgroundColor: string
+    fontColor: string
+    conversationStarters: string[]
+    theme: string
+
+    // 화면 표시 관련
+    appName: string
+    appDescription: string
+}
+
 // 기본 설정값
 export const defaultEditorConfig: EditorConfig = {
     basic: {

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import BasicTab from './tabs/BasicTab'
 import DesignTab from './tabs/DesignTab'
 import CreditsTab from './tabs/CreditsTab'
@@ -22,13 +22,19 @@ const TABS: TabConfig[] = [
 ]
 
 interface AppBuilderSidebarProps {
+    config: EditorConfig
     onTabChange?: (tab: TabType) => void
     onConfigChange?: (config: EditorConfig) => void
 }
 
-export default function AppBuilderSidebar({ onTabChange, onConfigChange }: AppBuilderSidebarProps) {
+export default function AppBuilderSidebar({ config, onTabChange, onConfigChange }: AppBuilderSidebarProps) {
     const [activeTab, setActiveTab] = useState<TabType>('basic')
-    const [config, setConfig] = useState<EditorConfig>(defaultEditorConfig)
+    const [localConfig, setLocalConfig] = useState<EditorConfig>(config)
+
+    // 부모에서 받은 config가 변경되면 localConfig도 동기화
+    useEffect(() => {
+        setLocalConfig(config)
+    }, [config])
 
     const handleTabChange = (tab: TabType) => {
         setActiveTab(tab)
@@ -37,13 +43,13 @@ export default function AppBuilderSidebar({ onTabChange, onConfigChange }: AppBu
 
     const updateConfig = (section: keyof EditorConfig, updates: Partial<EditorConfig[keyof EditorConfig]>) => {
         const newConfig = {
-            ...config,
+            ...localConfig,
             [section]: {
-                ...config[section],
+                ...localConfig[section],
                 ...updates,
             },
         }
-        setConfig(newConfig)
+        setLocalConfig(newConfig)
         onConfigChange?.(newConfig)
     }
 
@@ -75,11 +81,11 @@ export default function AppBuilderSidebar({ onTabChange, onConfigChange }: AppBu
 
             {/* Tab Content */}
             <div className="flex-1 overflow-y-auto p-4">
-                {activeTab === 'basic' && <BasicTab config={config.basic} onUpdate={(updates) => updateConfig('basic', updates)} />}
-                {activeTab === 'design' && <DesignTab config={config.design} onUpdate={(updates) => updateConfig('design', updates)} />}
-                {activeTab === 'credits' && <CreditsTab config={config.credits} onUpdate={(updates) => updateConfig('credits', updates)} />}
-                {activeTab === 'actions' && <ActionsTab config={config.actions} onUpdate={(updates) => updateConfig('actions', updates)} />}
-                {activeTab === 'more' && <MoreTab config={config.more} onUpdate={(updates) => updateConfig('more', updates)} />}
+                {activeTab === 'basic' && <BasicTab config={localConfig.basic} onUpdate={(updates) => updateConfig('basic', updates)} />}
+                {activeTab === 'design' && <DesignTab config={localConfig.design} onUpdate={(updates) => updateConfig('design', updates)} />}
+                {activeTab === 'credits' && <CreditsTab config={localConfig.credits} onUpdate={(updates) => updateConfig('credits', updates)} />}
+                {activeTab === 'actions' && <ActionsTab config={localConfig.actions} onUpdate={(updates) => updateConfig('actions', updates)} />}
+                {activeTab === 'more' && <MoreTab config={localConfig.more} onUpdate={(updates) => updateConfig('more', updates)} />}
             </div>
         </aside>
     )
