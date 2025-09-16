@@ -100,7 +100,7 @@ export const defaultEditorConfig: EditorConfig = {
         fontFace: '기본',
         enableRightToLeft: false,
         enableFeedbackButton: true,
-        conversationStarters: ['', '', '', ''],
+        conversationStarters: ['starter1', 'starter2'],
     },
     credits: {
         resetFreeChatsMonthly: false,
