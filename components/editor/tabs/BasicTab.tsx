@@ -109,7 +109,7 @@ export default function BasicTab({ config, onUpdate }: BasicTabProps) {
             </div>
 
             {/* Welcome Message */}
-            <div>
+            {/* <div>
                 <h4 className="mb-2 font-medium text-gray-900">환영 메시지</h4>
                 <textarea
                     value={config.welcomeMessage || ''}
@@ -119,7 +119,7 @@ export default function BasicTab({ config, onUpdate }: BasicTabProps) {
                     rows={3}
                 />
                 <p className="mt-1 text-xs text-gray-500">HTML과 JS를 지원합니다.</p>
-            </div>
+            </div> */}
 
             {/* Turn off Login */}
             <div>
