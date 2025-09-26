@@ -82,7 +82,7 @@ export async function loginWithKakao() {
                 console.log('Kakao login success:', authObj)
                 // 토큰을 콜백 페이지로 전송
                 if (authObj.access_token) {
-                    window.location.href = `/api/auth/kakao/callback?access_token=${authObj.access_token}`
+                    window.location.href = `/api/auth/kakao/callback?access_token=${authObj.access_token}&type=signin`
                 } else {
                     console.error('No access token received')
                 }
@@ -95,4 +95,3 @@ export async function loginWithKakao() {
         console.error('Failed to load Kakao SDK:', error)
     }
 }
-
