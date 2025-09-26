@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   frontend:
     build:
@@ -23,3 +21,11 @@ services:
       - WATCHPACK_POLLING=true
       # Webpack(Watchpack)도 폴링 사용.
       # 모듈 그래프/HMR/라우트 등록 갱신을 더 안정적으로 감지
+    networks:
+      - default
+      - backend-network
+
+networks:
+  backend-network:
+    external:
+      name: curious-ai-builder-backend_app-network
