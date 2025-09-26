@@ -12,6 +12,7 @@ services:
       - .env.local
     environment:
       - NODE_ENV=development
+      - REDIS_URL=redis://redis:6379
       # 도커 바인드 마운트에서 파일 변경 이벤트가 누락되는 걸 막기 위해
       # 파일 감시를 "폴링" 방식으로 강제합니다.
       - CHOKIDAR_USEPOLLING=true # Next가 쓰는 chokidar를 폴링 모드로 전환 (이벤트 대신 주기적 스캔)
@@ -21,9 +22,26 @@ services:
       - WATCHPACK_POLLING=true
       # Webpack(Watchpack)도 폴링 사용.
       # 모듈 그래프/HMR/라우트 등록 갱신을 더 안정적으로 감지
+    depends_on:
+      - redis
     networks:
       - default
       - backend-network
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - default
+      - backend-network
+
+volumes:
+  redis_data:
+
 
 networks:
   backend-network:
