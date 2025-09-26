@@ -97,7 +97,7 @@ export default function LoginPage() {
                                         </div>
                                     </div>
 
-                                    <KakaoLoginButton />
+                                    <KakaoLoginButton type="signin" />
                                 </form>
 
                                 <p className="mt-6 text-center text-sm text-gray-600">

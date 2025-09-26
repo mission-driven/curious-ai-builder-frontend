@@ -66,7 +66,7 @@ export function initKakaoSDK() {
 }
 
 // 카카오 로그인
-export async function loginWithKakao() {
+export async function loginWithKakao(type: 'signin' | 'signup') {
     try {
         // SDK 로드 및 초기화
         await loadKakaoSDK()
@@ -82,7 +82,7 @@ export async function loginWithKakao() {
                 console.log('Kakao login success:', authObj)
                 // 토큰을 콜백 페이지로 전송
                 if (authObj.access_token) {
-                    window.location.href = `/api/auth/kakao/callback?access_token=${authObj.access_token}&type=signin`
+                    window.location.href = `/api/auth/kakao/callback?access_token=${authObj.access_token}&type=${type}`
                 } else {
                     console.error('No access token received')
                 }

@@ -7,13 +7,15 @@ interface KakaoLoginButtonProps {
     className?: string
     children?: React.ReactNode
     disabled?: boolean
+    type?: 'signin' | 'signup'
 }
 
 export default function KakaoLoginButton({
     onClick,
     className,
     children,
-    disabled = false
+    disabled = false,
+    type = 'signin'
 }: KakaoLoginButtonProps) {
     const [isLoading, setIsLoading] = useState(false)
 
@@ -21,7 +23,7 @@ export default function KakaoLoginButton({
         // 기본 카카오 로그인 동작
         setIsLoading(true)
         try {
-            await loginWithKakao()
+            await loginWithKakao(type)
         } catch (error) {
             console.error('Kakao login error:', error)
         } finally {
