@@ -56,7 +56,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             // 사용자가 이미 회원가입이 되어 있는 경우
             // 로그인 페이지로 리다이렉트 한다.
             const message = encodeURIComponent('이미 회원가입이 되어 있습니다. 5초 후 로그인 페이지로 이동합니다.');
-            const redirectUrl = `/redirect?message=${message}&goto=/signin&delay=5000`;
+            const redirectUrl = `/redirect?message=${message}&goto=/login&delay=5000`;
             res.writeHead(302, { Location: redirectUrl });
             res.end()
             return
