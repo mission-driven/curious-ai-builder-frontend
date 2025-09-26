@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { KakaoLoginButton } from '@/components/auth'
 
 export default function SignupPage() {
     const [name, setName] = useState('')
@@ -120,15 +121,7 @@ export default function SignupPage() {
                                         </div>
                                     </div>
 
-                                    <button type="button" className="flex w-full items-center justify-center gap-2 rounded-lg bg-white py-2.5 font-medium text-gray-800 shadow-sm ring-1 ring-gray-900/10 hover:bg-gray-50">
-                                        <svg width="20" height="20" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden>
-                                            <path d="M43.6 20.5H42V20H24v8h11.3C33.9 31.9 29.4 35 24 35c-6.6 0-12-5.4-12-12s5.4-12 12-12c3 0 5.8 1.1 7.9 3l5.7-5.7C34.6 5.1 29.6 3 24 3 12.9 3 4 11.9 4 23s8.9 20 20 20 19-9 19-20c0-1.1-.1-2.1-.4-3.1z" fill="#FFC107" />
-                                            <path d="M6.3 14.7l6.6 4.8C14.5 16.2 18.9 13 24 13c3 0 5.8 1.1 7.9 3l5.7-5.7C34.6 5.1 29.6 3 24 3 16.2 3 9.6 7.4 6.3 14.7z" fill="#FF3D00" />
-                                            <path d="M24 43c5.3 0 10.2-2 13.9-5.2l-6.4-5.2C29.3 34.8 26.8 36 24 36c-5.4 0-10-3.1-12.2-7.6l-6.5 5C8.4 38.6 15.7 43 24 43z" fill="#4CAF50" />
-                                            <path d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.3-3.6 6.1-6.7 7.8l.1.1 6.4 5.2c-.5.4 8.9-5.3 8.9-16.1 0-1.1-.1-2.1-.4-3.1z" fill="#1976D2" />
-                                        </svg>
-                                        Continue with Google
-                                    </button>
+                                    <KakaoLoginButton type="signup" />
                                 </form>
 
                                 <p className="mt-6 text-center text-sm text-gray-600">
