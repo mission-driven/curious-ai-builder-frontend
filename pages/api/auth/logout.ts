@@ -1,25 +1,43 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+import { deleteSession } from '@/lib/redis'
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+/**
+ * 로그아웃 API
+ * 세션 쿠키를 삭제하고 Redis에서 세션을 제거합니다
+ */
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method !== 'POST') {
-        res.setHeader('Allow', 'POST')
-        return res.status(405).json({ success: false, message: 'Method Not Allowed' })
+        res.status(405).json({ success: false, message: 'Method not allowed' })
+        return
     }
 
-    // 세션 쿠키 만료 (즉시 만료시키는 Set-Cookie 전송)
-    const isProd = process.env.NODE_ENV === 'production'
-    const cookie = [
-        'session=; Path=/',
-        'HttpOnly',
-        isProd ? 'Secure' : undefined,
-        'SameSite=Lax',
-        'Max-Age=0'
-    ].filter(Boolean).join('; ')
+    try {
+        // 쿠키에서 세션 토큰 추출
+        const sessionToken = req.cookies.session
 
-    res.setHeader('Set-Cookie', cookie)
+        if (!sessionToken) {
+            res.status(400).json({ success: false, message: 'No session found' })
+            return
+        }
 
-    // 클라이언트에서 후속 이동을 위해 200 반환
-    return res.status(200).json({ success: true })
+        // Redis에서 세션 삭제
+        await deleteSession(sessionToken)
+
+        // 쿠키 삭제 (과거 날짜로 설정)
+        res.setHeader('Set-Cookie', [
+            'session=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT'
+        ])
+
+        res.status(200).json({
+            success: true,
+            message: 'Logged out successfully'
+        })
+
+    } catch (error) {
+        console.error('Logout error:', error)
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error'
+        })
+    }
 }
-
-
