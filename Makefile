@@ -82,7 +82,7 @@ docker-logs: ## Docker 컨테이너 로그를 확인합니다
 
 docker-shell: ## Docker 컨테이너에 접속합니다
 	@echo "🐚 Docker 컨테이너에 접속합니다..."
-	docker exec -it $(CONTAINER_NAME) /bin/bash
+	docker exec -it $(CONTAINER_NAME) sh
 
 docker-restart: ## Docker 컨테이너를 재시작합니다
 	@echo "🔄 Docker 컨테이너를 재시작합니다..."
