@@ -129,7 +129,7 @@ async function getKakaoUserInfo(access_token: string) {
 }
 
 async function requestSigninWithKakao(provider_user_id: string) {
-    const response = await fetch('http://curious-ai-builder-backend-app-1:8000/api/v1/auth/signin/oauth', {
+    const response = await fetch(process.env.BACKEND_URL + '/api/v1/auth/signin/oauth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -144,7 +144,7 @@ async function requestSigninWithKakao(provider_user_id: string) {
 }
 
 async function requestSignupWithKakao(provider_user_id: string) {
-    const response = await fetch('http://curious-ai-builder-backend-app-1:8000/api/v1/auth/signup/oauth', {
+    const response = await fetch(process.env.BACKEND_URL + '/api/v1/auth/signup/oauth', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
