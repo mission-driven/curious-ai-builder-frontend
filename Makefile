@@ -71,6 +71,7 @@ docker-up: ## Docker로 개발 환경을 시작합니다
 	@echo "🐳 Docker 개발 환경을 시작합니다..."
 	$(DOCKER_COMPOSE_DEV) up -d
 	@echo "✅ 개발 서버가 http://localhost:3000 에서 실행 중입니다!"
+	@echo "✅ Redis가 http://localhost:6379 에서 실행 중입니다!"
 
 docker-down: ## Docker 개발 환경을 중지합니다
 	@echo "🛑 Docker 개발 환경을 중지합니다..."
@@ -105,6 +106,27 @@ prod-down: ## 프로덕션 환경을 중지합니다
 prod-logs: ## 프로덕션 컨테이너 로그를 확인합니다
 	@echo "📋 프로덕션 컨테이너 로그를 확인합니다..."
 	$(DOCKER_COMPOSE_PROD) logs -f
+
+# Redis 관련 명령어
+redis-cli: ## Redis CLI에 접속합니다
+	@echo "🔴 Redis CLI에 접속합니다..."
+	docker exec -it ai-builder-redis-1 redis-cli
+
+redis-logs: ## Redis 로그를 확인합니다
+	@echo "📋 Redis 로그를 확인합니다..."
+	docker logs ai-builder-redis-1
+
+redis-info: ## Redis 서버 정보를 확인합니다
+	@echo "ℹ️  Redis 서버 정보를 확인합니다..."
+	docker exec ai-builder-redis-1 redis-cli info
+
+redis-flush: ## Redis 데이터를 모두 삭제합니다
+	@echo "🗑️  Redis 데이터를 삭제합니다..."
+	docker exec ai-builder-redis-1 redis-cli flushall
+
+redis-monitor: ## Redis 실시간 모니터링
+	@echo "👀 Redis 실시간 모니터링을 시작합니다..."
+	docker exec ai-builder-redis-1 redis-cli monitor
 
 # 편의 명령어들
 logs: docker-logs ## Docker 로그 확인 (docker-logs의 별칭)
