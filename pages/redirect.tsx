@@ -33,10 +33,9 @@ export default function RedirectPage() {
                     <div className="mx-auto w-full max-w-md">
                         <h1 className="text-center text-2xl font-bold tracking-tight text-gray-900">Redirecting...</h1>
                         <p className="mt-1 text-center text-sm text-gray-600">{message}</p>
-                    </div>
-                    {/* show count down */}
-                    <div className="mt-1 text-center text-sm text-gray-600">
-                        {countDown} seconds left...
+                        <div className="mt-1 text-center text-sm text-gray-600">
+                            {countDown} seconds left...
+                        </div>
                     </div>
                 </div>
             </main>
