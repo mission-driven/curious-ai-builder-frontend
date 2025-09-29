@@ -1,17 +1,39 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { KakaoLoginButton } from '@/components/auth'
+import { signinLocal } from '@/lib/signin'
 
 export default function LoginPage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [remember, setRemember] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState('')
+    const router = useRouter()
 
-    function handleSubmit(e: React.FormEvent) {
+    async function handleSubmit(e: React.FormEvent) {
         e.preventDefault()
-        // TODO: wire up real auth
-        console.log({ email, password, remember })
+        setIsLoading(true)
+        setError('')
+
+        try {
+            const result = await signinLocal({ email, password })
+
+            if (result.success) {
+                const sessionToken = result.sessionToken
+                // 세션 쿠키 설정
+                document.cookie = `session=${sessionToken}; path=/; HttpOnly; SameSite=Lax; Max-Age=2592000`
+                router.push('/dashboard')
+            } else {
+                setError(result.message || '로그인에 실패했습니다.')
+            }
+        } catch (error) {
+            setError('로그인 중 오류가 발생했습니다.' + error)
+        } finally {
+            setIsLoading(false)
+        }
     }
 
     return (
@@ -47,6 +69,11 @@ export default function LoginPage() {
                                 <p className="mt-1 text-center text-sm text-gray-600">Sign in to your account to continue</p>
 
                                 <form onSubmit={handleSubmit} className="mt-8 space-y-5">
+                                    {error && (
+                                        <div className="rounded-lg bg-red-50 p-3 text-sm text-red-600">
+                                            {error}
+                                        </div>
+                                    )}
                                     <div>
                                         <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">Email address</label>
                                         <input
@@ -84,8 +111,12 @@ export default function LoginPage() {
                                         <Link href="#" className="text-sm text-blue-600 hover:underline">Forgot password?</Link>
                                     </div>
 
-                                    <button type="submit" className="w-full rounded-lg bg-blue-600 py-2.5 font-semibold text-white hover:bg-blue-700">
-                                        Sign in
+                                    <button
+                                        type="submit"
+                                        disabled={isLoading}
+                                        className="w-full rounded-lg bg-blue-600 py-2.5 font-semibold text-white hover:bg-blue-700 disabled:bg-blue-400 disabled:cursor-not-allowed"
+                                    >
+                                        {isLoading ? '로그인 중...' : 'Sign in'}
                                     </button>
 
                                     <div className="relative">
