@@ -1,20 +1,108 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+import { signupLocal } from '@/lib/signup'
 import { KakaoLoginButton } from '@/components/auth'
 
 export default function SignupPage() {
-    const [name, setName] = useState('')
+    const router = useRouter()
+    // const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [confirm, setConfirm] = useState('')
     const [agree, setAgree] = useState(false)
+    const [isPasswordValid, setIsPasswordValid] = useState(false)
+    const [isConfirmValid, setIsConfirmValid] = useState(false)
+    const [errorEmail, setErrorEmail] = useState('')
+    const [errorPassword, setErrorPassword] = useState('')
+    const [errorConfirm, setErrorConfirm] = useState('')
+    const [isFormValid, setIsFormValid] = useState(false)
+    const [isEmailValid, setIsEmailValid] = useState(false)
+    const [isLoading, setIsLoading] = useState(false)
 
-    function handleSubmit(e: React.FormEvent) {
+
+    // password와 confirm이 일치하지 않으면 경고 메시지를 표시한다.
+    useEffect(() => {
+        if (password !== confirm) {
+            setErrorConfirm('비밀번호와 비밀번호 확인이 일치하지 않습니다.')
+            setIsConfirmValid(false)
+        } else {
+            setErrorConfirm('')
+            setIsConfirmValid(true)
+        }
+    }, [confirm])
+
+    // password가 유효하지 않으면 경고 메시지를 표시한다.
+    useEffect(() => {
+        if (password && password.length < 8 || password.length > 20) {
+            setErrorPassword('비밀번호는 8자 이상이어야 합니다.')
+            setIsPasswordValid(false)
+        }
+        else if (password && password.length > 20) {
+            setErrorPassword('비밀번호는 20자 이하이어야 합니다.')
+            setIsPasswordValid(false)
+        }
+        else {
+            setErrorPassword('')
+            setIsPasswordValid(true)
+        }
+    }, [password])
+
+    // email이 유효하지 않으면 경고 메시지를 표시한다.
+    useEffect(() => {
+        if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            setErrorEmail('이메일 형식이 올바르지 않습니다.')
+            setIsEmailValid(false)
+        } else {
+            setErrorEmail('')
+            setIsEmailValid(true)
+        }
+    }, [email])
+
+    // 폼 유효성 검사
+    useEffect(() => {
+        if (isEmailValid && isPasswordValid && isConfirmValid && agree) {
+            setIsFormValid(true)
+        } else {
+            setIsFormValid(false)
+        }
+    }, [isEmailValid, isPasswordValid, isConfirmValid, agree])
+
+
+    // 회원가입 처리
+    const handleCreateAccount = async (e: React.FormEvent) => {
         e.preventDefault()
-        // TODO: wire up real sign-up
-        console.log({ name, email, password, confirm, agree })
+        if (!isFormValid || isLoading) return
+        try {
+            setIsLoading(true)
+            const result = await signupLocal({ email, password })
+            if (result.success) {
+                const message = encodeURIComponent('인증용 이메일이 발송되었습니다. 이메일을 확인해주세요. 10초 후 로그인 페이지로 이동합니다.')
+                const redirectUrl = `/redirect?message=${message}&goto=/login&delay=10000`;
+                await router.push(redirectUrl)
+                return
+            }
+            else {
+                if (result.code == "EMAIL_ALREADY_USED") {
+                    setErrorEmail('이미 회원가입이 되어 있습니다.')
+                    setIsEmailValid(false)
+                    return
+                }
+                else {
+                    alert('큐리AI 고객팀에 문의해주세요 에러상황=>' + result.message + ' [ error code : ' + result.code + ']' + ' [ Serial Number : ' + result.serialNumber + ']' || '회원가입에 실패했습니다.')
+                    return
+                }
+            }
+        } catch (err) {
+            alert('회원가입 중 오류가 발생했습니다. Serial Number : 09262111')
+            return
+        } finally {
+            setIsLoading(false)
+            return
+        }
     }
+
 
     return (
         <>
@@ -48,8 +136,8 @@ export default function SignupPage() {
                                 <h1 className="text-center text-2xl font-bold tracking-tight text-gray-900">Create your account</h1>
                                 <p className="mt-1 text-center text-sm text-gray-600">Start building and monetizing your AI apps</p>
 
-                                <form onSubmit={handleSubmit} className="mt-8 space-y-5">
-                                    <div>
+                                <form onSubmit={handleCreateAccount} className="mt-8 space-y-5">
+                                    {/* <div>
                                         <label htmlFor="name" className="mb-1 block text-sm font-medium text-gray-700">Full name</label>
                                         <input
                                             id="name"
@@ -60,7 +148,7 @@ export default function SignupPage() {
                                             className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                                             required
                                         />
-                                    </div>
+                                    </div> */}
                                     <div>
                                         <label htmlFor="email" className="mb-1 block text-sm font-medium text-gray-700">Email address</label>
                                         <input
@@ -72,6 +160,7 @@ export default function SignupPage() {
                                             className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                                             required
                                         />
+                                        {errorEmail && <p className="text-red-500">{errorEmail}</p>}
                                     </div>
                                     <div>
                                         <label htmlFor="password" className="mb-1 block text-sm font-medium text-gray-700">Password</label>
@@ -84,6 +173,7 @@ export default function SignupPage() {
                                             className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                                             required
                                         />
+                                        {errorPassword && <p className="text-red-500">{errorPassword}</p>}
                                     </div>
                                     <div>
                                         <label htmlFor="confirm" className="mb-1 block text-sm font-medium text-gray-700">Confirm password</label>
@@ -96,6 +186,7 @@ export default function SignupPage() {
                                             className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500/20"
                                             required
                                         />
+                                        {errorConfirm && <p className="text-red-500">{errorConfirm}</p>}
                                     </div>
                                     <label className="flex items-center gap-2 text-sm text-gray-600">
                                         <input
@@ -108,8 +199,8 @@ export default function SignupPage() {
                                         I agree to the <a href="#" className="text-blue-600 hover:underline">Terms</a> and <a href="#" className="text-blue-600 hover:underline">Privacy</a>
                                     </label>
 
-                                    <button type="submit" className="w-full rounded-lg bg-blue-600 py-2.5 font-semibold text-white hover:bg-blue-700">
-                                        Create account
+                                    <button type="submit" className="w-full rounded-lg bg-blue-600 py-2.5 font-semibold text-white hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed" disabled={!isFormValid || isLoading}>
+                                        {isLoading ? '잠시만 기다려주세요...' : 'Create account'}
                                     </button>
 
                                     <div className="relative">
@@ -121,7 +212,7 @@ export default function SignupPage() {
                                         </div>
                                     </div>
 
-                                    <KakaoLoginButton type="signup" />
+                                    <KakaoLoginButton type="signup" disabled={isLoading} />
                                 </form>
 
                                 <p className="mt-6 text-center text-sm text-gray-600">
